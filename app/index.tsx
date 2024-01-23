@@ -5,11 +5,13 @@ import MenuButton from "../UI/MenuButton"
 import FilterButton from "../UI/FilterButton"
 import AppInput from "../UI/AppInput"
 import AddImageButton from "../UI/AddImageButton"
+import PersonCard from "../components/PersonCard/PersonCard"
 
 export default function Page() {
 	return (
 		<View style={styles.container}>
 			<View style={styles.main}>
+				<PersonCard />
 				<NavigationButton />
 				<MenuButton
 					image={require("../assets/icons/users.png")}

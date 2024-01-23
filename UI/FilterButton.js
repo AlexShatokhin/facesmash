@@ -3,7 +3,7 @@ import styled from "styled-components/native";
 const FilterTouchableOpacity = styled.TouchableOpacity`
     width: 100%;
     padding: 10px;
-    border: 3px solid #A0A0A0;
+    border: 2px solid #A0A0A0;
     border-radius: 100px;
 `
 
