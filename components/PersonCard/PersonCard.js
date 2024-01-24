@@ -3,12 +3,12 @@ import {PersonCardTouchableOpacity,
         PersonCardTextWrapper, 
         PersonCardText} from "./PersonCard.styles"
 
-const PersonCard = () => {
+const PersonCard = ({name}) => {
     return (
         <PersonCardTouchableOpacity>
             <PersonCardImage />
             <PersonCardTextWrapper>
-                <PersonCardText>Name Surname</PersonCardText>
+                <PersonCardText>{name}</PersonCardText>
             </PersonCardTextWrapper>
         </PersonCardTouchableOpacity>
     )

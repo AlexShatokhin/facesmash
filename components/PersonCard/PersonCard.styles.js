@@ -5,6 +5,8 @@ export const PersonCardTouchableOpacity = styled.TouchableOpacity`
     height: 260px;
     border-radius: 10px;
     overflow: hidden;
+    margin-right: 10px;
+    margin-bottom: 10px;
 ` 
 
 export const PersonCardImage = styled.Image`

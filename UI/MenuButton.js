@@ -2,7 +2,7 @@ import {Image, Text } from "react-native";
 import styled from "styled-components/native"
 
 const MenuTouchableOpacity = styled.TouchableOpacity`
-    width: 100px;
+    width: 30%;
     height: 70px;
     display: flex;
     align-items: center;
