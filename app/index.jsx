@@ -1,4 +1,4 @@
-import { ScrollView, StyleSheet, Text, View } from "react-native";
+import { ScrollView, StyleSheet, Text, View, Dimensions, useWindowDimensions } from "react-native";
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 
 import NavigationButton from "../UI/NavigationButton"
@@ -12,6 +12,8 @@ import AppMenu from "../modules/AppMenu/AppMenu"
 import HomePage from "../pages/HomePage/HomePage"
 
 export default function Page() {
+	const {height} = useWindowDimensions();
+
 	return (
 		<SafeAreaProvider>
 			<SafeAreaView style={styles.container}>
@@ -32,8 +34,14 @@ export default function Page() {
 					<Text style={styles.title}>Hello World</Text>
 					<Text style={styles.subtitle}>This is the first page of your app.</Text>					
 				</View> */}
-
-				<HomePage />
+				<View style = {{
+					height, 
+					justifyContent: "space-between", 
+					padding: 10}}>
+						
+					<HomePage />
+					<AppMenu/>
+				</View>
 			</SafeAreaView>
 
 
@@ -43,8 +51,9 @@ export default function Page() {
 
 const styles = StyleSheet.create({
 	container: {
-		padding: 10,
-		marginTop: 10,
+        flex: 1,
+        alignItems: 'center',
+        justifyContent: 'center', 
 	},
 	main: {
 		flex: 1,

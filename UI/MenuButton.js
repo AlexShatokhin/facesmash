@@ -2,21 +2,24 @@ import {Image, Text } from "react-native";
 import styled from "styled-components/native"
 
 const MenuTouchableOpacity = styled.TouchableOpacity`
-    width: 30%;
-    height: 70px;
+    width: 33%;
+    height: 100%;
     display: flex;
     align-items: center;
+    border-radius: 10px;
+    padding: 5px 0;
 `
-const MenuButton = ({image, description}) => {
+const MenuButton = ({image, description, isActive, ...props}) => {
 
     return (
-        <MenuTouchableOpacity>
+        <MenuTouchableOpacity {...props}>
                 <Image 
                     source = {image}
                     alt="menu arrow"
-                    style = {{width: 45, height: 45}}
+                    style = {isActive ? {width: 60, height: 60} : {width: 45, height: 45}}
                     resizeMode='contain'/> 
-                <Text>{description}</Text>
+                    
+                {isActive ? null : <Text>{description}</Text>}
         </MenuTouchableOpacity>
 
     )

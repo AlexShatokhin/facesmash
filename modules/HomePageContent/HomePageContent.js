@@ -1,8 +1,8 @@
 import {HomePageLayout, HomePageTitle, HomePageSubtitle } from "./HomePageContent.style";
 
-const HomePageContent = () => {
+const HomePageContent = ({style}) => {
     return (
-        <HomePageLayout>
+        <HomePageLayout style = {style}>
             <HomePageTitle>facesmash</HomePageTitle>
             <HomePageSubtitle>Выберите элемент меню</HomePageSubtitle>
         </HomePageLayout>

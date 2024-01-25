@@ -1,20 +1,15 @@
-import { View, StyleSheet } from "react-native"
+import { View, StyleSheet, Dimensions, useWindowDimensions } from "react-native"
 import AppMenu from "../../modules/AppMenu/AppMenu"
 import HomePageContent from "../../modules/HomePageContent/HomePageContent"
 
 const HomePage = () => {
-    return (
-        <View style = {styles.container}>
+    return (    
+        <View  style = {{flex: 1, justifyContent: "center"}}>
             <HomePageContent />
-            <AppMenu />
         </View>
     )
 }
 
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-    }
-});
+
 
 export default HomePage
