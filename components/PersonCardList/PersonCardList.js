@@ -1,9 +1,11 @@
 import {PersonCardFlatList} from "./PersonCardList.styles"
 
 const PersonCardList = ({data, renderItem}) => {
-    console.log(data.map(renderItem).length)
     return (
         <PersonCardFlatList
+            contentContainerStyle = {{
+                alignItems: "center"
+            }}
             horizontal = {false}
             data={data}
             renderItem={({item}) => renderItem(item)} 

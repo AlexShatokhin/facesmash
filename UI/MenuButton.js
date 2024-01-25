@@ -7,7 +7,6 @@ const MenuTouchableOpacity = styled.TouchableOpacity`
     display: flex;
     align-items: center;
     border-radius: 10px;
-    padding: 5px 0;
 `
 const MenuButton = ({image, description, isActive, ...props}) => {
 
@@ -16,10 +15,10 @@ const MenuButton = ({image, description, isActive, ...props}) => {
                 <Image 
                     source = {image}
                     alt="menu arrow"
-                    style = {isActive ? {width: 60, height: 60} : {width: 45, height: 45}}
+                    style = {isActive ? {width: 50, height: 50} : {width: 45, height: 45}}
                     resizeMode='contain'/> 
                     
-                {isActive ? null : <Text>{description}</Text>}
+                <Text style = {isActive ? {fontWeight: 700} : null}>{description}</Text>
         </MenuTouchableOpacity>
 
     )

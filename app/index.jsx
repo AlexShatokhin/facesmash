@@ -1,5 +1,6 @@
 import { ScrollView, StyleSheet, Text, View, Dimensions, useWindowDimensions } from "react-native";
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
+import { router } from "expo-router";
 
 import NavigationButton from "../UI/NavigationButton"
 import MenuButton from "../UI/MenuButton"
@@ -9,14 +10,13 @@ import AddImageButton from "../UI/AddImageButton"
 import PersonCard from "../components/PersonCard/PersonCard"
 import PersonCardList from "../components/PersonCardList/PersonCardList";
 import AppMenu from "../modules/AppMenu/AppMenu"
-import HomePage from "../pages/HomePage/HomePage"
+import HomePage from "./pages/HomePage/HomePage"
 
 export default function Page() {
 	const {height} = useWindowDimensions();
-
 	return (
 		<SafeAreaProvider>
-			<SafeAreaView style={styles.container}>
+			<SafeAreaView>
 				{/* <View>
 					<AppMenu />
 					<PersonCardList 
@@ -34,16 +34,10 @@ export default function Page() {
 					<Text style={styles.title}>Hello World</Text>
 					<Text style={styles.subtitle}>This is the first page of your app.</Text>					
 				</View> */}
-				<View style = {{
-					height, 
-					justifyContent: "space-between", 
-					padding: 10}}>
-						
+				<View>				
 					<HomePage />
-					<AppMenu/>
 				</View>
 			</SafeAreaView>
-
 
 		</SafeAreaProvider>
 	);
