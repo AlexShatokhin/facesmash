@@ -1,7 +1,7 @@
 import styled from "styled-components/native";
 
 export const PersonCardTouchableOpacity = styled.TouchableOpacity`
-    width: 150px;
+    width: 170px;
     height: 260px;
     border-radius: 10px;
     overflow: hidden;
