@@ -1,5 +1,5 @@
 import {MenuMain, MenuSplitter, MenuItemsListWrapper} from "./AppMenu.style"
-import MenuButton from "../../UI/MenuButton";
+import MenuButton from "./UI/MenuButton";
 import { FlatList } from "react-native";
 import { useState } from "react";
 import { router } from "expo-router";

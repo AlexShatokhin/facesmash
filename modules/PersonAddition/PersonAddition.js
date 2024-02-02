@@ -1,6 +1,6 @@
 import { View } from "react-native"
-import AddImageButton from "../../UI/AddImageButton"
-import AppInput from "../../UI/AppInput"
+import AddImageButton from "./UI/AddImageButton"
+import AppInput from "./UI/AppInput"
 
 const PersonAddition = () => {
     return(
