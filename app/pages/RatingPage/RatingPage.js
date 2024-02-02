@@ -1,25 +1,21 @@
-import { useWindowDimensions } from "react-native"
 import AppMenu from "../../../modules/AppMenu/AppMenu"
 import PersonsList from "../../../modules/PersonsList/PersonsList";
-import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
+import { SafeAreaProvider } from "react-native-safe-area-context";
+import AppSafeAreaView from "../../../UI/SafeAreaViewStyled";
 import { useLocalSearchParams } from "expo-router";
 
 
 const RatingPage = () => {
-    const {height} = useWindowDimensions();
     const {id} = useLocalSearchParams();
 
     return (    
         <SafeAreaProvider>
-            <SafeAreaView style = {{
-					height, 
-					justifyContent: "space-between", 
-					padding: 10}}>
+            <AppSafeAreaView>
+
                 <PersonsList />
-                {console.log(id)}
-                <AppMenu
-                    initialButton={id}/>
-            </SafeAreaView>
+                <AppMenu initialButton={id}/>
+
+            </AppSafeAreaView>
         </SafeAreaProvider>
 
     )

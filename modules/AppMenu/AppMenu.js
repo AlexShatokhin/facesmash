@@ -38,7 +38,7 @@ const AppMenu = ({style, initialButton}) => {
                     renderItem={({item}) => 
                         <MenuButton 
                             style = {activeButton === item.id ? {
-                                backgroundColor: "#90101060",
+                                backgroundColor: "#A0A0A040",
                             } : null}
                             key = {item.id}
                             image={item.image}
