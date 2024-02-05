@@ -8,9 +8,10 @@ const InputStyled = styled.TextInput`
     border-radius: 10px;
 `
 
-const AppInput = ({placeholder}) => {
+const AppInput = ({placeholder, ...props}) => {
     return (
         <InputStyled 
+            {...props}
             placeholder={placeholder}/>
     )
 }

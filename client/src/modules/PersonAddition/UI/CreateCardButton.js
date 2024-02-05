@@ -1,7 +1,7 @@
 import { useWindowDimensions } from "react-native";
 import styled from "styled-components/native";
 
-const CreateCardButton = () => {
+const CreateCardButton = (props) => {
 
     const {width} = useWindowDimensions();
     const CreateCardTouchableOpacity = styled.TouchableOpacity`
@@ -22,7 +22,7 @@ const CreateCardButton = () => {
     `;
 
     return (
-        <CreateCardTouchableOpacity>
+        <CreateCardTouchableOpacity {...props}>
             <CreateCardText>
                 &#10003; 
             </CreateCardText>
