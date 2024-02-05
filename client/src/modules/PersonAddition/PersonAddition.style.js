@@ -1,4 +1,5 @@
 import { StyleSheet } from "react-native";
+import {smallShadow} from "../../constants/shadow";
 
 export default styles = StyleSheet.create({
     container: {
@@ -15,5 +16,6 @@ export default styles = StyleSheet.create({
         height: 170,
         width: 260,
         justifyContent: "space-around"
-    }
+    },
+    createButton: smallShadow
 })

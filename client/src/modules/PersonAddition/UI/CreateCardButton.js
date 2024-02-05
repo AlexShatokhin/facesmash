@@ -1,4 +1,5 @@
 import { useWindowDimensions } from "react-native";
+import styles from "../PersonAddition.style"
 import styled from "styled-components/native";
 
 const CreateCardButton = (props) => {
@@ -11,8 +12,8 @@ const CreateCardButton = (props) => {
         width: 60px;
         height: 60px;
         margin-left: ${width - 100}px;
-        border: 2px solid #008000;
-        background-color: #469536;
+        border: 2px solid #2ea20e;
+        background-color: #2ea20e;
         border-radius: 100px;
     `;
     const CreateCardText = styled.Text`
@@ -22,7 +23,7 @@ const CreateCardButton = (props) => {
     `;
 
     return (
-        <CreateCardTouchableOpacity {...props}>
+        <CreateCardTouchableOpacity style = {styles.createButton} {...props}>
             <CreateCardText>
                 &#10003; 
             </CreateCardText>
