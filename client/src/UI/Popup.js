@@ -1,4 +1,4 @@
-import { Text, StyleSheet } from "react-native"
+import { Text, StyleSheet, Image } from "react-native"
 import { smallShadow } from "../constants/shadow"
 import Animated, {ZoomIn, ZoomOut, FadeIn, FadeOut} from "react-native-reanimated"
 
@@ -9,7 +9,12 @@ export default Popup = ({image, text}) => {
                 style = {styles.popupContent} 
                 entering={ZoomIn.springify().stiffness(300).damping(20)} 
                 exiting={ZoomOut}>
-                <Text>{text}</Text>
+                <Image 
+                    source={image}
+                    alt="menu arrow"
+                    style = {{width: 110, height: 110}}
+                    resizeMode='contain'/>
+                <Text style = {styles.popupText}>{text}</Text>
             </Animated.View>
         </Animated.View>
 
@@ -26,7 +31,11 @@ const styles = StyleSheet.create({
         backgroundColor: "#FFFFFF",
         borderRadius: 10,
         padding: 20,
+        paddingTop: 40,
         ...smallShadow,
+        flex: 1,
+        alignItems: "center",
+        justifyContent: "space-around"
     },
     popupLayout: {
         position: "absolute",
@@ -36,5 +45,10 @@ const styles = StyleSheet.create({
         height: "120%",
         backgroundColor: "#FFFFFFCC",
         zIndex: 10
+    },
+    popupText: {
+        fontSize: 23,
+        fontWeight: "500",
+        textAlign: "center"
     }
 })

@@ -11,6 +11,8 @@ import chevronRight from '../assets/icons/chevron-right.png'
 import add_user from "../assets/icons/add_user.png"
 import rating from "../assets/icons/rating.png"
 import users from "../assets/icons/users.png"
+import success from "../assets/icons/success.png"
+import fail from "../assets/icons/fail.png"
 
 export default {
   heart,
@@ -25,5 +27,7 @@ export default {
   chevronRight,
   add_user,
   rating,
-  users
+  users,
+  success,
+  fail
 };

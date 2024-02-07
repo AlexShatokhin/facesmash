@@ -1,9 +1,11 @@
 import Popup from "../../../UI/Popup"
 
 export const SuccessPopup = () => {
-    return <Popup text={"Person was added successfully!"}/>
+    const image = require("../../../constants").icons.success
+    return <Popup image={image} text={"Person was added successfully!"}/>
 }
 
 export const ErrorPopup = () => {
-    return <Popup text={"Oops! Something went wrong..."}/>
+    const image = require("../../../constants").icons.fail
+    return <Popup image = {image} text={"Oops! Something went wrong..."}/>
 }
