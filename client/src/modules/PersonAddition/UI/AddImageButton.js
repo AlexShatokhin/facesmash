@@ -22,7 +22,7 @@ const AddImageButton = ({preview, ...props}) => {
         <AddImageTouchableOpacity {...props}>
             {preview ?  
                 <Image 
-                    source = {{ uri: 'data:image/jpeg;base64,' + preview }}
+                    source = {{ uri: preview }}
                     alt="person image"
                     style = {{width: 110, height: 160}}
                     resizeMode='cover'/>  :
