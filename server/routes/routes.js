@@ -1,9 +1,10 @@
 const express = require("express");
 const router = express.Router();
 const addPerson = require("../controllers/addPerson");
+const getPersons = require("../controllers/getPersons")
 
 router.route("/persons")
-    .get((req, res) => res.send({ok: 200}))
+    .get(getPersons.getAllPersons)
     .post(addPerson.postPerson)
     .put()
 

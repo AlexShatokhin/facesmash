@@ -2,12 +2,15 @@ import {PersonCardTouchableOpacity,
         PersonCardImage, 
         PersonCardTextWrapper, 
         PersonCardText} from "./PersonCard.styles"
-import {mediumShadow, smallShadow} from "../../constants/shadow";
+import {mediumShadow} from "../../constants/shadow";
 
-const PersonCard = ({name, renderProps}) => {
+const PersonCard = ({name, image, renderProps}) => {
     return (
         <PersonCardTouchableOpacity style = {mediumShadow}>
-            <PersonCardImage />
+            <PersonCardImage                     
+                    source = {{ uri: image }}
+                    alt="person image"
+                    resizeMode='cover'/>
             <PersonCardTextWrapper>
                 <PersonCardText>{name}</PersonCardText>
             </PersonCardTextWrapper>
