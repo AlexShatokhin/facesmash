@@ -3,10 +3,11 @@ const db = require("../config/config");
 class addPerson {
     async postPerson (req, res){
         try{
-            const {name, surname, image} = req.body;
+            console.log(req.file);
+            const {name, surname} = req.body;
             await db.query(`
                 INSERT INTO persons(name, surname, imageURL)
-                VALUES('${name}', '${surname}', '${image}');
+                VALUES('${name}', '${surname}', '${req.file.filename}');
             `)
             res.send({
                 status: 200

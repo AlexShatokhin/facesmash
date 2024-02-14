@@ -1,6 +1,7 @@
 import { View, useWindowDimensions } from "react-native"
+import {Buffer} from "buffer"
 import * as ImagePicker from "expo-image-picker"
-import { useState } from "react"
+import { useState, useMemo } from "react"
 
 import useHttp from "../../hooks/http.hook"
 
@@ -17,26 +18,34 @@ const PersonAddition = () => {
     });
     const [isImageLoaded, setIsImageLoaded] = useState(false);
     const [showPopup, setShowPopup] = useState(null);
-    const [preview, setPreview] = useState("");
+    const [imageData, setImageData] = useState("");
+
+    const imageHeader = useMemo(() => 'data:image/jpeg;base64,')
     
     const {loading, error, httpRequest} = useHttp()
     const {height} = useWindowDimensions();
 
     function fetchPersonData(){
-        const fetchData = JSON.stringify({
-            ...personForm,
-            image: preview
-        })
-        httpRequest("http://10.251.79.5:3300/persons", "POST", fetchData)
+        const fetchData = new FormData();
+        fetchData.append("name", personForm.name);
+        fetchData.append("surname", personForm.surname);
+        fetchData.append("avatar", {
+            uri: imageData.uri,
+            type: imageData.type,
+            name: "new image"
+        });
+        fetchData.append("personImageHeader", imageHeader)
+
+        httpRequest("http://10.251.79.5:3300/persons", "POST", fetchData, null)
         .then(res => setShowPopup(res.status))
-        .catch(res => setShowPopup(400))
+        .catch(() => setShowPopup(400))
         clearForm();
     }
 
     function clearForm(){
         setPersonForm({name: "", surname: ""});
         setIsImageLoaded(false);
-        setPreview("");
+        setImageData("");
     }
 
     function getFormData(text, name){
@@ -51,10 +60,16 @@ const PersonAddition = () => {
           aspect: [3, 4],
           quality: 1,
         });
-        
+
+
         if(result.assets !== null){
             setIsImageLoaded(true);
-            setPreview('data:image/jpeg;base64,' + result.assets[0].base64)
+            const image = result.assets[0];
+            setImageData({
+                preview: image.base64,
+                uri: image.uri,
+                type: image.mimeType
+            })
         } else {
             setIsImageLoaded(false);
         }
@@ -75,7 +90,7 @@ const PersonAddition = () => {
     return(
         <View style = {{height: height - 170}}>
             <View style = {styles.createCardContainer}>
-                <AddImageButton preview={isImageLoaded ? preview : null} onPress = {pickImage}/>
+                <AddImageButton preview={isImageLoaded ? imageHeader + imageData.preview : null} onPress = {pickImage}/>
                 <View style = {styles.inputsWrapper}>
                     <AppInput 
                         name = "name" 

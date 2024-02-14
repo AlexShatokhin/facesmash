@@ -9,9 +9,8 @@ const useHttp = () => {
 
         setLoading(true);
         setError(false);
-
         try{
-            const response = await fetch(url, {method, headers, body});
+            const response = headers ? await fetch(url, {method, headers, body}) : await fetch(url, {method, body});
 
             if(response.ok){
                 setLoading(false);
