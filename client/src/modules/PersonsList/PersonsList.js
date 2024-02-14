@@ -29,6 +29,7 @@ const PersonsList = () => {
                 data = {persons}
                 renderItem={(item) => 
                     <PersonCard 
+                        image = {item.imageURL}
                         name = {`${item.name} ${item.surname}`} 
                         renderProps={() => <PersonRating>{item.rating}</PersonRating>}/>}
                             />}

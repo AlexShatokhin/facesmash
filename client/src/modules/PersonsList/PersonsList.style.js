@@ -8,7 +8,11 @@ export const PersonRating = styled.Text`
     z-index: 3;
     font-size: 22px;
     font-weight: 700;
-    color: #000000; 
+    color: #101010; 
+    border: 1px solid #FFFFFFAA;
+    padding: 0 5px;
+    border-radius: 10px;
+    background-color: #FFFFFFAA;
 `
 
 export const FilterContainer = styled.View`
