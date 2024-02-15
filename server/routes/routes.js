@@ -2,28 +2,34 @@ const express = require("express");
 const router = express.Router();
 const multer = require("multer")
 
-const storage = multer.diskStorage({
-		destination: function (req, file, cb) {
-			cb(null, __dirname + '/../assets')
-		},
-		filename: function (req, file, cb) {
-			const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9)
-			const fileExtension = file.mimetype.split("/").pop();
-			cb(null, file.fieldname + '-' + uniqueSuffix + "." + fileExtension)
-		}
-	})
-	
-	const upload = multer({ storage: storage })
-
 const addPerson = require("../controllers/addPerson");
-const getPersons = require("../controllers/getPersons")
+const getPersons = require("../controllers/getPersons");
+const editPersons = require("../controllers/editPersons");
+
+const storage = multer.diskStorage({
+	destination: function (req, file, cb) {
+		cb(null, __dirname + '/../assets')
+	},
+	filename: function (req, file, cb) {
+		const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9)
+		const fileExtension = file.mimetype.split("/").pop();
+		cb(null, file.fieldname + '-' + uniqueSuffix + "." + fileExtension)
+	}
+})
+
+const upload = multer({ storage: storage })
+
 
 router.route("/persons")
-		.get(getPersons.getAllPersons)
 		.post(upload.single("avatar"), addPerson.postPerson)
-		.put()
+
+router.route("/persons/:sortType")
+	.get(getPersons.getAllPersons)
+
 
 router.route("/personsComparison")
 	.get(getPersons.getPersonPair)
+	.put(editPersons.changePersonsScore)
+
 
 module.exports = router;

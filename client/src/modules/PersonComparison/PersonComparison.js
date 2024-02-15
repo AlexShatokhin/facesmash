@@ -16,10 +16,21 @@ const PersonComparison = () => {
         .then(setPersons)
     }
 
+    function comparePersons(personID){
+        const comparisonResults = {
+            persons: persons.map(person => person.id),
+            choosenPerson: personID
+        }
+        setPersons([]);
+        httpRequest("http://10.251.79.5:3300/personsComparison", "PUT", JSON.stringify(comparisonResults))
+        .then(getPair)
+    }
+
     function renderCards(){
         return persons.map(person => 
             <PersonCard 
-                onPress = {getPair}
+                key = {person.id}
+                onPress = {() => comparePersons(person.id)}
                 name = {person.name + " " + person.surname} 
                 image = {person.imageURL}/>)
     }
@@ -31,7 +42,7 @@ const PersonComparison = () => {
             alignItems: "center",
             justifyContent: "center"
         }}>
-            {loading ? <LoadingView /> : !error ? renderCards() : null}
+            {loading || persons.length === 0 ? <LoadingView /> : !error ? renderCards() : null}
         </View>
     )
 }

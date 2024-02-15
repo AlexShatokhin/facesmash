@@ -19,9 +19,11 @@ function getRandomIndexes(array, indexesCount = 1, result = []){
 class getPersons {
 
     async getAllPersons(req, res){
-        let [persons] = await db.query("SELECT * FROM persons");
+        const type = req.params.sortType;
+
+        let [persons] = await db.query(`SELECT * FROM persons ORDER BY ${type === "alphabet" ? "name, surname" : "rating DESC"}`);
         persons = persons.map(person => ({...person, imageURL: getImage(person.imageURL)}))
-        console.log(persons)
+
         res.send(persons)
     }
 
