@@ -6,22 +6,23 @@ import { router } from "expo-router";
 
 const AppMenu = ({style, initialButton}) => {
 
+    const icons = require("../../constants/icons").default;
     const buttons = [
         {
             id: 1,
-            image: require("../../assets/icons/users.png"),
+            image: icons.users,
             description: "Сравнение",
             route: "pages/ComparisonPage/ComparisonPage"
         },
         {
             id: 2,
-            image: require("../../assets/icons/rating.png"),
+            image: icons.rating,
             description: "Рейтинг",
             route: "pages/RatingPage/RatingPage"
         },
         {
             id: 3,
-            image: require("../../assets/icons/add_user.png"),
+            image: icons.add_user,
             description: "Новый участник",
             route: "pages/AddPersonPage/AddPersonPage"
         }

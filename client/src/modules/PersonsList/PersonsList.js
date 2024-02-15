@@ -34,7 +34,7 @@ const PersonsList = () => {
                 <FilterButton onPress = {() => toggleFilter(1)} active={activeFilterIndex === 1} value={"По очкам"}/>
             </FilterContainer>
             <View style = {styles.cardContainer}>
-                {loading ? 
+                {loading || persons.length === 0 ? 
                     <ActivityIndicator size="large" color="#808080" />
                 : 
                     <PersonCardList 

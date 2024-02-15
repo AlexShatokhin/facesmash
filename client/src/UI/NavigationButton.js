@@ -7,7 +7,7 @@ const NavigationTouchableOpacity = styled.TouchableOpacity`
 `
 
 const NavigationButton = () => {
-    const arrow = require("../constants").icons.chevronLeft
+    const arrow = require("../constants/icons").chevronLeft
     return (
         <NavigationTouchableOpacity>
                 <Image 
