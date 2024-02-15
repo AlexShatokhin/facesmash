@@ -1,4 +1,4 @@
-import { View } from "react-native"
+import { View, ActivityIndicator } from "react-native"
 import PersonCard from "../../components/PersonCard/PersonCard"
 import PersonCardList from "../../components/PersonCardList/PersonCardList"
 import FilterButton from "./UI/FilterButton"
@@ -24,20 +24,24 @@ const PersonsList = () => {
                 <FilterButton value={"По очкам"}/>
             </FilterContainer>
             <View style = {styles.cardContainer}>
-                {loading ? null : 
-                <PersonCardList 
-                data = {persons}
-                renderItem={(item) => 
-                    <PersonCard 
-                        image = {item.imageURL}
-                        name = {`${item.name} ${item.surname}`} 
-                        renderProps={() => <PersonRating>{item.rating}</PersonRating>}/>}
-                            />}
+                {loading ? 
+                    <ActivityIndicator size="large" color="#808080" />
+                : 
+                    <PersonCardList 
+                    data = {persons}
+                    renderItem={(item) => 
+                        <PersonCard 
+                            image = {item.imageURL}
+                            name = {`${item.name} ${item.surname}`} 
+                            renderProps={() => <PersonRating>{item.rating}</PersonRating>}/>}
+                                />
+                }
 
             </View>
         </View>
 
     )
 }
+
 
 export default PersonsList

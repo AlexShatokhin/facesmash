@@ -4,9 +4,9 @@ import {PersonCardTouchableOpacity,
         PersonCardText} from "./PersonCard.styles"
 import {mediumShadow} from "../../constants/shadow";
 
-const PersonCard = ({name, image, renderProps}) => {
+const PersonCard = ({name, image, renderProps, ...props}) => {
     return (
-        <PersonCardTouchableOpacity style = {mediumShadow}>
+        <PersonCardTouchableOpacity {...props} style = {mediumShadow}>
             <PersonCardImage                     
                     source = {{ uri: image }}
                     alt="person image"

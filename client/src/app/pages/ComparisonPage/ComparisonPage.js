@@ -12,9 +12,7 @@ const ComparisonPage = () => {
         <SafeAreaProvider>
             <AppSafeAreaView>
 
-                <PersonComparison 
-                    persons={[{name: "Robert Pattison"}, {name: "Sam Graham"}]}
-                    style = {{flex: 1, justifyContent: "center"}}/>
+                <PersonComparison style = {{flex: 1, justifyContent: "center"}}/>
                 <AppMenu initialButton={id}/>
                 
             </AppSafeAreaView>
