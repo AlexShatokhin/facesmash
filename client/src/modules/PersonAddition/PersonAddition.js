@@ -4,6 +4,8 @@ import { useState, useMemo } from "react"
 
 import useHttp from "../../hooks/http.hook"
 
+import prepareDataToFetch from "./api/preparePersonData"
+
 import styles from "./PersonAddition.style"
 import AddImageButton from "./UI/AddImageButton"
 import AppInput from "./UI/AppInput"
@@ -24,20 +26,8 @@ const PersonAddition = () => {
     const {httpRequest} = useHttp()
     const {height} = useWindowDimensions();
 
-    function prepareDataToFetch(){
-        const fetchData = new FormData();
-        fetchData.append("name", personForm.name);
-        fetchData.append("surname", personForm.surname);
-        fetchData.append("avatar", {
-            uri: imageData.uri,
-            type: imageData.type,
-            name: "new image"
-        });
-        fetchData.append("personImageHeader", imageHeader)
-    }
-
     function fetchPersonData(){
-        const data = prepareDataToFetch();
+        const data = prepareDataToFetch(personForm, imageData);
         httpRequest("http://10.251.79.5:3300/persons", "POST", data, null)
         .then(res => setShowPopup(res.status))
         .catch(() => setShowPopup(400))
