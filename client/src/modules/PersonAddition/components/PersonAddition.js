@@ -13,6 +13,7 @@ import useHttp from "../../../hooks/http.hook"
 
 import prepareDataToFetch from "../api/preparePersonData"
 import getImageData from "../helpers/getImageData"
+import getPopup from "../helpers/getPopup"
 
 import AddImageButton from "../UI/AddImageButton"
 import AppInput from "../UI/AppInput"
@@ -24,7 +25,9 @@ import styles from "../PersonAddition.style"
 const PersonAddition = () => {
 
     const dispatch = useDispatch();
-    const {personForm, showPopup, isImageLoaded, imageData} = useSelector(state => state);
+    const personForm = useSelector(state => state.personForm);
+    const isImageLoaded = useSelector(state => state.isImageLoaded);
+    const imageData = useSelector(state => state.imageData);
 
     const imageHeader = useMemo(() => 'data:image/jpeg;base64,')
     const {httpRequest} = useHttp()
@@ -56,19 +59,6 @@ const PersonAddition = () => {
     };
 
 
-
-    function getPopup(){
-        switch(showPopup){
-            case 200:
-                setTimeout(() => {dispatch(changePopupValue(0))}, 2000) 
-                return <SuccessPopup />;
-            case 400:
-                setTimeout(() => {dispatch(changePopupValue(0))}, 2000) 
-                return <ErrorPopup />;
-            default: return null
-        }
-    }
-
     return(
         <View style = {{height: height - 170}}>
             <View style = {styles.createCardContainer}>
@@ -93,7 +83,6 @@ const PersonAddition = () => {
 
     )
 }
-
 
 
 export default PersonAddition;
