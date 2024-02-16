@@ -44,7 +44,7 @@ const PersonsList = () => {
                             image = {item.imageURL}
                             name = {`${item.name} ${item.surname}`} 
                             renderProps={() => <PersonRating>{item.rating}</PersonRating>}/>}
-                                />
+                    />
                 }
 
             </View>

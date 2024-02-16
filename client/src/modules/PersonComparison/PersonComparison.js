@@ -1,7 +1,7 @@
 import { View } from "react-native"
 import useHttp from "../../hooks/http.hook"
 import PersonCard from "../../components/PersonCard/PersonCard"
-import SkeletonComponent from "../../UI/Skeleton"
+import SkeletonComponent from "./UI/Skeleton"
 import { useEffect, useState } from "react"
 
 const PersonComparison = () => {

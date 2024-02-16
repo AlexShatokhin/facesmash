@@ -21,7 +21,11 @@
       "adaptiveIcon": {
         "foregroundImage": "./src/assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "permissions": [
+        "android.permission.RECORD_AUDIO"
+      ],
+      "package": "com.alexshatokhin.facesmash"
     },
     "web": {
       "bundler": "metro",
@@ -39,6 +43,14 @@
     ],
     "experiments": {
       "typedRoutes": true
+    },
+    "extra": {
+      "router": {
+        "origin": false
+      },
+      "eas": {
+        "projectId": "fccdd393-aaa0-4743-a0bd-a2d84764e79d"
+      }
     }
   }
 }

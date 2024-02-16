@@ -1,5 +1,4 @@
 import { View, useWindowDimensions } from "react-native"
-import {Buffer} from "buffer"
 import * as ImagePicker from "expo-image-picker"
 import { useState, useMemo } from "react"
 
@@ -9,7 +8,7 @@ import styles from "./PersonAddition.style"
 import AddImageButton from "./UI/AddImageButton"
 import AppInput from "./UI/AppInput"
 import CreateCardButton from "./UI/CreateCardButton"
-import { SuccessPopup, ErrorPopup } from "./UI/AnimatedModal"
+import { SuccessPopup, ErrorPopup } from "./components/AnimatedModal"
 
 const PersonAddition = () => {
     const [personForm, setPersonForm] = useState({
@@ -22,10 +21,10 @@ const PersonAddition = () => {
 
     const imageHeader = useMemo(() => 'data:image/jpeg;base64,')
     
-    const {loading, error, httpRequest} = useHttp()
+    const {httpRequest} = useHttp()
     const {height} = useWindowDimensions();
 
-    function fetchPersonData(){
+    function prepareDataToFetch(){
         const fetchData = new FormData();
         fetchData.append("name", personForm.name);
         fetchData.append("surname", personForm.surname);
@@ -35,11 +34,14 @@ const PersonAddition = () => {
             name: "new image"
         });
         fetchData.append("personImageHeader", imageHeader)
+    }
 
-        httpRequest("http://10.251.79.5:3300/persons", "POST", fetchData, null)
+    function fetchPersonData(){
+        const data = prepareDataToFetch();
+        httpRequest("http://10.251.79.5:3300/persons", "POST", data, null)
         .then(res => setShowPopup(res.status))
         .catch(() => setShowPopup(400))
-        clearForm();
+        .finally(() => clearForm())
     }
 
     function clearForm(){
@@ -50,6 +52,15 @@ const PersonAddition = () => {
 
     function getFormData(text, name){
         setPersonForm(form => ({...form, [name]: text}))
+    }
+
+    function getImageData(value){
+        const image = value.assets[0];
+        return {
+            preview: image.base64,
+            uri: image.uri,
+            type: image.mimeType
+        };
     }
 
     const pickImage = async () => {
@@ -64,12 +75,7 @@ const PersonAddition = () => {
 
         if(result.assets !== null){
             setIsImageLoaded(true);
-            const image = result.assets[0];
-            setImageData({
-                preview: image.base64,
-                uri: image.uri,
-                type: image.mimeType
-            })
+            setImageData(getImageData(result))
         } else {
             setIsImageLoaded(false);
         }

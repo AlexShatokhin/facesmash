@@ -11,7 +11,6 @@ export default function Page() {
 					<HomePage />
 				</View>
 			</SafeAreaView>
-
 		</SafeAreaProvider>
 	);
 }
