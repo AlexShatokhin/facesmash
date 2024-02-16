@@ -22,7 +22,6 @@ const HomePage = () => {
 
 const styles = StyleSheet.create({
     view: {
-        height, 
         justifyContent: "space-between", 
         padding: 10
     },
