@@ -1,9 +1,11 @@
-import {MenuMain, MenuSplitter, MenuItemsListWrapper} from "./AppMenu.style"
-import MenuButton from "./UI/MenuButton";
-import buttons from "./data/buttons";
 import { FlatList } from "react-native";
 import { useState } from "react";
 import { router } from "expo-router";
+
+import buttons from "./data/buttons";
+
+import {MenuMain, MenuSplitter, MenuItemsListWrapper, styles} from "./AppMenu.style"
+import MenuButton from "./UI/MenuButton";
 
 const AppMenu = ({style, initialButton}) => {
 
@@ -17,9 +19,7 @@ const AppMenu = ({style, initialButton}) => {
                     data = {buttons}
                     renderItem={({item}) => 
                         <MenuButton 
-                            style = {activeButton === item.id ? {
-                                backgroundColor: "#A0A0A040",
-                            } : null}
+                            style = {activeButton === item.id ? styles.activeButton : null}
                             key = {item.id}
                             image={item.image}
                             description={item.description}

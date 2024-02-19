@@ -1,8 +1,15 @@
-import { View } from "react-native"
-import useHttp from "../../hooks/http.hook"
-import PersonCard from "../../components/PersonCard/PersonCard"
-import SkeletonComponent from "./UI/Skeleton"
 import { useEffect, useState } from "react"
+import { View } from "react-native"
+
+import useHttp from "../../hooks/http.hook"
+
+import prepareDataToCompare from "./api/prepareDataToCompare"
+
+import { URL, PORT } from "../../constants/server"
+
+import PersonCard from "../../components/PersonCard/PersonCard"
+import LoadingView from "./components/Loading"
+import styles from "./PersonComparison.style"
 
 const PersonComparison = () => {
 
@@ -12,17 +19,14 @@ const PersonComparison = () => {
     useEffect(getPair, [])
 
     function getPair(){
-        httpRequest("http://10.251.79.5:3300/personsComparison")
+        httpRequest(`${URL}:${PORT}/personsComparison`)
         .then(setPersons)
     }
 
     function comparePersons(personID){
-        const comparisonResults = {
-            persons: persons.map(person => person.id),
-            choosenPerson: personID
-        }
         setPersons([]);
-        httpRequest("http://10.251.79.5:3300/personsComparison", "PUT", JSON.stringify(comparisonResults))
+        
+        httpRequest(`${URL}:${PORT}/personsComparison`, "PUT", JSON.stringify(prepareDataToCompare(persons, personID)))
         .then(getPair)
     }
 
@@ -36,24 +40,12 @@ const PersonComparison = () => {
     }
 
     return (
-        <View style = {{
-            flex: 1,
-            flexDirection: "row",
-            alignItems: "center",
-            justifyContent: "center"
-        }}>
+        <View style = {styles.container}>
             {loading || persons.length === 0 ? <LoadingView /> : !error ? renderCards() : null}
         </View>
     )
 }
 
-const LoadingView = () => {
-    return (
-        <>
-            <SkeletonComponent style = {{marginRight: 10, marginTop: -10, marginLeft: -5}}/>
-            <SkeletonComponent style = {{marginRight: 10, marginTop: -10, marginLeft: -5}} />
-        </>
-    )
-}
+
 
 export default PersonComparison
