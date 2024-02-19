@@ -18,7 +18,6 @@ import getPopup from "../helpers/getPopup"
 import AddImageButton from "../UI/AddImageButton"
 import AppInput from "../UI/AppInput"
 import CreateCardButton from "../UI/CreateCardButton"
-import { SuccessPopup, ErrorPopup } from "./AnimatedModal"
 
 import styles from "../PersonAddition.style"
 
@@ -42,7 +41,7 @@ const PersonAddition = () => {
         .finally(() => dispatch(clearForm()))
     }
 
-    const pickImage = async () => {
+    async function pickImage() {
         let result = await ImagePicker.launchImageLibraryAsync({
           mediaTypes: ImagePicker.MediaTypeOptions.All,
           base64: true,
@@ -62,7 +61,10 @@ const PersonAddition = () => {
     return(
         <View style = {{height: height - 170}}>
             <View style = {styles.createCardContainer}>
-                <AddImageButton preview={isImageLoaded ? imageHeader + imageData.preview : null} onPress = {pickImage}/>
+                <AddImageButton 
+                    preview={isImageLoaded ? imageHeader + imageData.preview : null} 
+                    onPress = {pickImage}/>
+
                 <View style = {styles.inputsWrapper}>
                     <AppInput 
                         name = "name" 

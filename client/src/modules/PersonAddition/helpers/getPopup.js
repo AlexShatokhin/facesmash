@@ -1,4 +1,6 @@
+import { changePopupValue } from "../slice/addPersonsSlice";
 import { useDispatch, useSelector } from "react-redux";
+import {SuccessPopup, ErrorPopup} from "../components/AnimatedModal"
 
 export default function getPopup(){
 
