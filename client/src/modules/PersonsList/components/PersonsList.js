@@ -6,8 +6,9 @@ import useHttp from "../../../hooks/http.hook";
 
 import { updatePersons, updateFilterIndex } from "../slice/personsListSlice"
 
-
 import getSortType from "../helpers/getSortType"
+
+import { URL, PORT } from "../../../constants/server";
 
 import PersonCard from "../../../components/PersonCard/PersonCard"
 import PersonCardList from "../../../components/PersonCardList/PersonCardList"
@@ -34,7 +35,7 @@ const PersonsList = () => {
 
     function getPersons(sortType = "alphabet"){
         dispatch(updatePersons([]));
-        httpRequest(`http://10.251.79.5:3300/persons/${sortType}`)
+        httpRequest(`${URL}:${PORT}/persons/${sortType}`)
         .then(res => dispatch(updatePersons(res)))
     }
 

@@ -5,6 +5,8 @@ import useHttp from "../../hooks/http.hook"
 
 import prepareDataToCompare from "./api/prepareDataToCompare"
 
+import { URL, PORT } from "../../constants/server"
+
 import PersonCard from "../../components/PersonCard/PersonCard"
 import LoadingView from "./components/Loading"
 import styles from "./PersonComparison.style"
@@ -17,14 +19,14 @@ const PersonComparison = () => {
     useEffect(getPair, [])
 
     function getPair(){
-        httpRequest("http://10.251.79.5:3300/personsComparison")
+        httpRequest(`${URL}:${PORT}/personsComparison`)
         .then(setPersons)
     }
 
     function comparePersons(personID){
         setPersons([]);
         
-        httpRequest("http://10.251.79.5:3300/personsComparison", "PUT", JSON.stringify(prepareDataToCompare(persons, personID)))
+        httpRequest(`${URL}:${PORT}/personsComparison`, "PUT", JSON.stringify(prepareDataToCompare(persons, personID)))
         .then(getPair)
     }
 

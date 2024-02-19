@@ -11,6 +11,8 @@ import { clearForm,
 
 import useHttp from "../../../hooks/http.hook"
 
+import { URL, PORT } from "../../../constants/server"
+
 import prepareDataToFetch from "../api/preparePersonData"
 import getImageData from "../helpers/getImageData"
 import getPopup from "../helpers/getPopup"
@@ -35,7 +37,7 @@ const PersonAddition = () => {
     function fetchPersonData(){
         const data = prepareDataToFetch(personForm, imageData);
 
-        httpRequest("http://10.251.79.5:3300/persons", "POST", data, null)
+        httpRequest(`${URL}:${PORT}/persons`, "POST", data, null)
         .then(res => dispatch(changePopupValue(res.status)))
         .catch(() => dispatch(changePopupValue(400)))
         .finally(() => dispatch(clearForm()))
