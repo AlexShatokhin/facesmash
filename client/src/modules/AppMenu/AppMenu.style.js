@@ -1,3 +1,4 @@
+import { StyleSheet } from "react-native";
 import styled from "styled-components/native";
 
 export const MenuMain = styled.View`
@@ -17,3 +18,9 @@ export const MenuItemsListWrapper = styled.View`
     width: 100%;
     display: block;
 `
+
+export const styles = StyleSheet.create({
+    activeButton: {
+        backgroundColor: "#A0A0A040"
+    }
+})
