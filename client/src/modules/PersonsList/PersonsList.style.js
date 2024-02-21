@@ -33,5 +33,39 @@ export const styles = StyleSheet.create({
         flexDirection: "row",
         alignItems: "center",
         justifyContent: "center"
+    },
+    sheet: {
+        position: "absolute",
+        top: -20,
+        left: -20,
+        right: -20,
+        bottom: -100,
+        backgroundColor: "rgba(0, 0, 0, .4)",
+        flex: 1,
+        flexDirection: "column",
+        justifyContent: "flex-end",
+        alignItems: "center",
+        zIndex: 10
+    },
+
+    sheetContent: {
+        height: 700,
+        borderRadius: 20,
+        backgroundColor: "#FFFFFF",
+        overflow: "hidden"
+    },
+
+    imageGradient: {
+        position: "absolute",
+        left: 0,
+        right: 0,
+        top: 0,
+        width: "100%",
+        height: 500
+    },
+    
+    cardText: {
+        fontSize: 25,
+        fontWeight: "bold"
     }
 })

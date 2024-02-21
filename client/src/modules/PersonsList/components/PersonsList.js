@@ -1,18 +1,23 @@
 import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { View, ActivityIndicator } from "react-native"
+import { View, ActivityIndicator, Text, Image, ImageBackground  } from "react-native"
+
+import { LinearGradient } from "expo-linear-gradient"
 
 import useHttp from "../../../hooks/http.hook";
 
-import { updatePersons, updateFilterIndex } from "../slice/personsListSlice"
+import { updatePersons, updateFilterIndex, toggleBottomSheet } from "../slice/personsListSlice"
 
 import getSortType from "../helpers/getSortType"
+import getPersonById from "../helpers/getPersonById";
 
 import { URL, PORT } from "../../../constants/server";
 
 import PersonCard from "../../../components/PersonCard/PersonCard"
 import PersonCardList from "../../../components/PersonCardList/PersonCardList"
+import BottomSheet from "./BottomSheet";
 
+import BottomSheetCard from "../UI/BottomSheetCard";
 import FilterButton from "../UI/FilterButton"
 import { PersonRating, FilterContainer, styles } from "../PersonsList.style"
 
@@ -22,6 +27,8 @@ const PersonsList = () => {
     const dispatch = useDispatch();
     const persons = useSelector(state => state.persons);
     const activeFilterIndex = useSelector(state => state.activeFilterIndex);
+    const showBottomSheet = useSelector(state => state.showBottomSheet);
+    const bottomSheetPersonId = useSelector(state => state.bottomSheetPersonId)
 
     const {loading, error, httpRequest} = useHttp();
 
@@ -37,6 +44,11 @@ const PersonsList = () => {
         dispatch(updatePersons([]));
         httpRequest(`${URL}:${PORT}/persons/${sortType}`)
         .then(res => dispatch(updatePersons(res)))
+    }
+
+    function getBottomSheetCard(){
+        const {name, surname, imageURL} = getPersonById(bottomSheetPersonId, persons);
+        return <BottomSheetCard name={name} surname={surname} image={imageURL}/>
     }
 
     return (
@@ -61,6 +73,8 @@ const PersonsList = () => {
                     data = {persons}
                     renderItem={(item) => 
                         <PersonCard 
+                            onPress = {() => dispatch(toggleBottomSheet(item.id))}
+                            animation = {false}
                             image = {item.imageURL}
                             name = {`${item.name} ${item.surname}`} 
                             renderProps={() => <PersonRating>{item.rating}</PersonRating>}/>}
@@ -68,6 +82,11 @@ const PersonsList = () => {
                 }
 
             </View>
+            {showBottomSheet ? 
+                <BottomSheet>
+                    {getBottomSheetCard()}
+                </BottomSheet> 
+                : null}
         </View>
 
     )

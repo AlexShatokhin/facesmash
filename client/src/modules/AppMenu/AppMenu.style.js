@@ -4,6 +4,7 @@ import styled from "styled-components/native";
 export const MenuMain = styled.View`
     width: 380px;
     height: 100px;
+    z-index: 2;
 `
 
 export const MenuSplitter = styled.View`

@@ -33,6 +33,7 @@ const PersonComparison = () => {
     function renderCards(){
         return persons.map(person => 
             <PersonCard 
+                animation = {false}
                 key = {person.id}
                 onPress = {() => comparePersons(person.id)}
                 name = {person.name + " " + person.surname} 
