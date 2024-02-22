@@ -11,7 +11,7 @@ const AppMenu = ({style, initialButton}) => {
 
     const [activeButton, setActiveButton] = useState(+initialButton);
     return (
-        <MenuMain style = {style}>
+        <MenuMain style = {{...style, elevation: -5}}>
             <MenuSplitter />
             <MenuItemsListWrapper>
                 <FlatList 

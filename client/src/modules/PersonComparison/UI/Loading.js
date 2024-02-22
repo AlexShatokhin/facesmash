@@ -1,4 +1,4 @@
-import SkeletonComponent from "../UI/Skeleton"
+import SkeletonComponent from "./Skeleton"
 
 const LoadingView = () => {
     return (
