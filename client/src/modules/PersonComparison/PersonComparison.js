@@ -16,7 +16,8 @@ import styles from "./PersonComparison.style"
 const PersonComparison = () => {
 
     const [persons, setPersons] = useState([]);
-    const [showScoreAnimation, setShowScoreAnimation] = useState(null)
+    const [showScoreAnimation, setShowScoreAnimation] = useState(null);
+    const [personsCompared, setPersonsCompared] = useState(false);
     const {httpRequest, loading, error} = useHttp()
 
     useEffect(getPair, [])
@@ -26,8 +27,13 @@ const PersonComparison = () => {
         .then(setPersons)
     }
 
-    function comparePersons(personID){
+    function togglePersonsCompared(){
+        setPersonsCompared(prev => !prev);
+    }
 
+    function comparePersons(personID){
+        
+        togglePersonsCompared();
         setShowScoreAnimation(prepareDataToCompare(persons, personID));
         setTimeout(() => {
             setShowScoreAnimation(null);
@@ -35,6 +41,7 @@ const PersonComparison = () => {
             
             httpRequest(`${URL}:${PORT}/personsComparison`, "PUT", JSON.stringify(prepareDataToCompare(persons, personID)))
             .then(getPair)
+            .then(togglePersonsCompared)
         }, 600)
 
     }
@@ -51,6 +58,7 @@ const PersonComparison = () => {
                         : null
                 }
                 <PersonCard 
+                    disabled = {personsCompared}
                     animation = {false}
                     key = {person.id}
                     onPress = {() => comparePersons(person.id)}
