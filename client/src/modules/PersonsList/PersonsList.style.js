@@ -40,7 +40,7 @@ export const styles = StyleSheet.create({
         left: -20,
         right: -20,
         bottom: -100,
-        backgroundColor: "rgba(0, 0, 0, .4)",
+        backgroundColor: "rgba(0, 0, 0, .0)",
         flex: 1,
         flexDirection: "column",
         justifyContent: "flex-end",
@@ -66,6 +66,7 @@ export const styles = StyleSheet.create({
     
     cardText: {
         fontSize: 25,
-        fontWeight: "bold"
-    }
+        fontWeight: "bold",
+        height: "100%"
+        }
 })

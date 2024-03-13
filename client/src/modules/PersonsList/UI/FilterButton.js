@@ -5,8 +5,8 @@ const FilterButton = ({value, active, ...props}) => {
     const FilterTouchableOpacity = styled.TouchableOpacity`
     width: 120px;
     padding: 7px;
-    border: 2px solid ${active ? "#FFFFFF" : "#A0A0A0"};
-    background-color: ${active ? "#A0A0A0" : "#FFFFFF"};
+    border: 2px solid ${active ? "#FFFFFF00" : "#A0A0A0"};
+    background-color: ${active ? "#A0A0A0" : "none"};
     border-radius: 100px;
     `
 

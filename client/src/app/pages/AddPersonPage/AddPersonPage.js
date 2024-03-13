@@ -6,7 +6,8 @@ import AppMenu from "../../../modules/AppMenu/AppMenu"
 import AddPerson from "../../../modules/PersonAddition/PersonAddition";
 import store from "../../../store/store";
 
-import AppSafeAreaView from "../../../UI/SafeAreaViewStyled";
+import SwitchThemeButton from "../../../components/ThemeButton/ThemeButton";
+import AppSafeAreaView from "../../../components/SafeAreaView/SafeAreaViewStyled";
 
 
 const AddPersonPage = () => {
@@ -14,16 +15,15 @@ const AddPersonPage = () => {
 
     return (    
         <SafeAreaProvider>
-
             <Provider store={store}>
                 <AppSafeAreaView>
 
+                    <SwitchThemeButton />
                     <AddPerson />
                     <AppMenu initialButton={id}/>
                     
                 </AppSafeAreaView>
             </Provider>
-
         </SafeAreaProvider>
 
     )

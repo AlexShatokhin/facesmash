@@ -21,6 +21,6 @@ export const MenuItemsListWrapper = styled.View`
 
 export const styles = StyleSheet.create({
     activeButton: {
-        backgroundColor: "#A0A0A040"
+        backgroundColor: "#A0A0A060"
     }
 })

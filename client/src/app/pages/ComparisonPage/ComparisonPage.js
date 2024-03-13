@@ -6,7 +6,8 @@ import AppMenu from "../../../modules/AppMenu/AppMenu"
 import PersonComparison from "../../../modules/PersonComparison/PersonComparison";
 import store from "../../../store/store";
 
-import AppSafeAreaView from "../../../UI/SafeAreaViewStyled";
+import SwitchThemeButton from "../../../components/ThemeButton/ThemeButton";
+import AppSafeAreaView from "../../../components/SafeAreaView/SafeAreaViewStyled";
 
 const ComparisonPage = () => {
     const {id} = useLocalSearchParams();
@@ -16,6 +17,7 @@ const ComparisonPage = () => {
             <Provider store={store}>
                 <AppSafeAreaView>
 
+                    <SwitchThemeButton />
                     <PersonComparison style = {{flex: 1, justifyContent: "center"}}/>
                     <AppMenu initialButton={id}/>
                     

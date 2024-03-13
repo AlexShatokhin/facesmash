@@ -1,5 +1,5 @@
 import { useWindowDimensions, StyleSheet } from "react-native"
-import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
+import { SafeAreaProvider } from "react-native-safe-area-context";
 import { useLocalSearchParams } from "expo-router";
 import { Provider } from "react-redux";
 
@@ -7,6 +7,8 @@ import store from "../../../store/store";
 import AppMenu from "../../../modules/AppMenu/AppMenu"
 import HomePageContent from "../../../modules/HomePageContent/HomePageContent"
 
+import SwitchThemeButton from "../../../components/ThemeButton/ThemeButton";
+import AppSafeAreaView from "../../../components/SafeAreaView/SafeAreaViewStyled";
 
 const HomePage = () => {
     const {height} = useWindowDimensions();
@@ -15,10 +17,13 @@ const HomePage = () => {
     return (    
         <SafeAreaProvider>
             <Provider store={store}>
-                <SafeAreaView style = {{height, ...styles.view}}>
+                <AppSafeAreaView style = {{height, ...styles.view}}>
+
+                    <SwitchThemeButton />
                     <HomePageContent style = {styles.page}/>
                     <AppMenu initialButton={id}/>
-                </SafeAreaView>                
+                    
+                </AppSafeAreaView>                
             </Provider>
         </SafeAreaProvider>
 

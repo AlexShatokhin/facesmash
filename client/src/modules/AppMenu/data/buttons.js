@@ -1,24 +1,29 @@
-const icons = require("../constants/constants").default;;
+const icons = require("../constants/constants").default;
 
-const buttons = [
-    {
-        id: 1,
-        image: icons.users,
-        description: "Сравнение",
-        route: "pages/ComparisonPage/ComparisonPage"
-    },
-    {
-        id: 2,
-        image: icons.rating,
-        description: "Рейтинг",
-        route: "pages/RatingPage/RatingPage"
-    },
-    {
-        id: 3,
-        image: icons.add_user,
-        description: "Новый участник",
-        route: "pages/AddPersonPage/AddPersonPage"
-    }
-]
+function getButtons(theme){
+    return buttons = [
+        {
+            id: 1,
+            image: theme === "light" ? icons.users : icons.users__light,
+            description: "Сравнение",
+            route: "pages/ComparisonPage/ComparisonPage"
+        },
+        {
+            id: 2,
+            image: theme === "light" ? icons.rating : icons.rating__light,
+            description: "Рейтинг",
+            route: "pages/RatingPage/RatingPage"
+        },
+        {
+            id: 3,
+            image:  theme === "light" ?  icons.add_user : icons.add_user__light,
+            description: "Новый участник",
+            route: "pages/AddPersonPage/AddPersonPage"
+        }
+    ]
+    
 
-export default buttons
+}
+
+
+export default getButtons

@@ -8,7 +8,7 @@ const MenuTouchableOpacity = styled.TouchableOpacity`
     align-items: center;
     border-radius: 10px;
 `
-const MenuButton = ({image, description, isActive, ...props}) => {
+const MenuButton = ({image, description, isActive, theme, ...props}) => {
 
     return (
         <MenuTouchableOpacity {...props}>
@@ -18,7 +18,7 @@ const MenuButton = ({image, description, isActive, ...props}) => {
                     style = {isActive ? {width: 50, height: 50} : {width: 45, height: 45}}
                     resizeMode='contain'/> 
                     
-                <Text style = {isActive ? {fontWeight: 700} : null}>{description}</Text>
+                <Text style = {{fontWeight: isActive ? 700 : 400, color: theme === "light" ? "#000000" : "#FFFFFF"}}>{description}</Text>
         </MenuTouchableOpacity>
 
     )

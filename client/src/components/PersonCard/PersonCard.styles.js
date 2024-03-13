@@ -18,14 +18,12 @@ export const PersonCardImage = styled.Image`
 export const PersonCardTextWrapper = styled.View`
     width: 100%;
     height: 15%;
-    background-color: #333333;
     display: flex;
     justify-content: center;
     align-items: center;
 `
 
 export const PersonCardText = styled.Text`
-    color: #FFFFFF;
     font-weight: 700;
     font-size: 15px;
 `

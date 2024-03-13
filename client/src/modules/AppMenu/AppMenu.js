@@ -1,8 +1,9 @@
 import { FlatList } from "react-native";
 import { useState } from "react";
 import { router } from "expo-router";
+import { useSelector } from "react-redux";
 
-import buttons from "./data/buttons";
+import getButtons from "./data/buttons";
 
 import {MenuMain, MenuSplitter, MenuItemsListWrapper, styles} from "./AppMenu.style"
 import MenuButton from "./UI/MenuButton";
@@ -10,13 +11,14 @@ import MenuButton from "./UI/MenuButton";
 const AppMenu = ({style, initialButton}) => {
 
     const [activeButton, setActiveButton] = useState(+initialButton);
+    const theme = useSelector(state => state.themeReducer.theme);
     return (
         <MenuMain style = {{...style, elevation: -5}}>
             <MenuSplitter />
             <MenuItemsListWrapper>
                 <FlatList 
                     numColumns={3}
-                    data = {buttons}
+                    data = {getButtons(theme)}
                     renderItem={({item}) => 
                         <MenuButton 
                             style = {activeButton === item.id ? styles.activeButton : null}
@@ -24,6 +26,7 @@ const AppMenu = ({style, initialButton}) => {
                             image={item.image}
                             description={item.description}
                             isActive = {activeButton === item.id} 
+                            theme = {theme}
                             onPress = {() => {
                                 setActiveButton(item.id)
                                 router.navigate({pathname: item.route, params: {id: item.id}})
