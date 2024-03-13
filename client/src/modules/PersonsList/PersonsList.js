@@ -4,31 +4,31 @@ import { View, ActivityIndicator, Text, Image, ImageBackground  } from "react-na
 
 import { LinearGradient } from "expo-linear-gradient"
 
-import useHttp from "../../../hooks/http.hook";
+import useHttp from "../../hooks/http.hook";
 
-import { updatePersons, updateFilterIndex, toggleBottomSheet } from "../slice/personsListSlice"
+import { updatePersons, updateFilterIndex, toggleBottomSheet } from "./slice/personsListSlice"
 
-import getSortType from "../helpers/getSortType"
-import getPersonById from "../helpers/getPersonById";
+import getSortType from "./helpers/getSortType"
+import getPersonById from "./helpers/getPersonById";
 
-import { URL, PORT } from "../../../constants/server";
+import { URL, PORT } from "../../constants/server";
 
-import PersonCard from "../../../components/PersonCard/PersonCard"
-import PersonCardList from "../../../components/PersonCardList/PersonCardList"
-import BottomSheet from "./BottomSheet";
+import PersonCard from "../../components/PersonCard/PersonCard"
+import PersonCardList from "../../components/PersonCardList/PersonCardList"
+import BottomSheet from "./components/BottomSheet";
 
-import BottomSheetCard from "../UI/BottomSheetCard";
-import FilterButton from "../UI/FilterButton"
-import { PersonRating, FilterContainer, styles } from "../PersonsList.style"
+import BottomSheetCard from "./UI/BottomSheetCard";
+import FilterButton from "./UI/FilterButton"
+import { PersonRating, FilterContainer, styles } from "./PersonsList.style"
 
 
 const PersonsList = () => {
 
     const dispatch = useDispatch();
-    const persons = useSelector(state => state.persons);
-    const activeFilterIndex = useSelector(state => state.activeFilterIndex);
-    const showBottomSheet = useSelector(state => state.showBottomSheet);
-    const bottomSheetPersonId = useSelector(state => state.bottomSheetPersonId)
+    const persons = useSelector(state => state.personsListReducer.persons);
+    const activeFilterIndex = useSelector(state => state.personsListReducer.activeFilterIndex);
+    const showBottomSheet = useSelector(state => state.personsListReducer.showBottomSheet);
+    const bottomSheetPersonId = useSelector(state => state.personsListReducer.bottomSheetPersonId)
 
     const {loading, error, httpRequest} = useHttp();
 

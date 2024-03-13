@@ -7,28 +7,28 @@ import { clearForm,
         getFormData, 
         changePopupValue, 
         changeImageData, 
-        changeImageLoadedStatus } from "../slice/addPersonsSlice"
+        changeImageLoadedStatus } from "./slice/addPersonsSlice"
 
-import useHttp from "../../../hooks/http.hook"
+import useHttp from "../../hooks/http.hook"
 
-import { URL, PORT } from "../../../constants/server"
+import { URL, PORT } from "../../constants/server"
 
-import prepareDataToFetch from "../api/preparePersonData"
-import getImageData from "../helpers/getImageData"
-import getPopup from "../helpers/getPopup"
+import prepareDataToFetch from "./api/preparePersonData"
+import getImageData from "./helpers/getImageData"
+import getPopup from "./helpers/getPopup"
 
-import AddImageButton from "../UI/AddImageButton"
-import AppInput from "../UI/AppInput"
-import CreateCardButton from "../UI/CreateCardButton"
+import AddImageButton from "./UI/AddImageButton"
+import AppInput from "./UI/AppInput"
+import CreateCardButton from "./UI/CreateCardButton"
 
-import styles from "../PersonAddition.style"
+import styles from "./PersonAddition.style"
 
 const PersonAddition = () => {
 
     const dispatch = useDispatch();
-    const personForm = useSelector(state => state.personForm);
-    const isImageLoaded = useSelector(state => state.isImageLoaded);
-    const imageData = useSelector(state => state.imageData);
+    const personForm = useSelector(state => state.addPersonsReducer.personForm);
+    const isImageLoaded = useSelector(state => state.addPersonsReducer.isImageLoaded);
+    const imageData = useSelector(state => state.addPersonsReducer.imageData);
 
     const imageHeader = useMemo(() => 'data:image/jpeg;base64,')
     const {httpRequest} = useHttp()

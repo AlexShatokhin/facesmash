@@ -1,8 +1,12 @@
-import AppMenu from "../../../modules/AppMenu/AppMenu"
-import AddPerson from "../../../modules/PersonAddition";
 import { SafeAreaProvider } from "react-native-safe-area-context";
-import AppSafeAreaView from "../../../UI/SafeAreaViewStyled";
 import { useLocalSearchParams } from "expo-router";
+import { Provider } from "react-redux";
+
+import AppMenu from "../../../modules/AppMenu/AppMenu"
+import AddPerson from "../../../modules/PersonAddition/PersonAddition";
+import store from "../../../store/store";
+
+import AppSafeAreaView from "../../../UI/SafeAreaViewStyled";
 
 
 const AddPersonPage = () => {
@@ -10,12 +14,16 @@ const AddPersonPage = () => {
 
     return (    
         <SafeAreaProvider>
-            <AppSafeAreaView>
 
-                <AddPerson />
-                <AppMenu initialButton={id}/>
-                
-            </AppSafeAreaView>
+            <Provider store={store}>
+                <AppSafeAreaView>
+
+                    <AddPerson />
+                    <AppMenu initialButton={id}/>
+                    
+                </AppSafeAreaView>
+            </Provider>
+
         </SafeAreaProvider>
 
     )

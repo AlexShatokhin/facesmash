@@ -1,8 +1,12 @@
-import AppMenu from "../../../modules/AppMenu/AppMenu"
-import PersonsList from "../../../modules/PersonsList/index";
 import { SafeAreaProvider } from "react-native-safe-area-context";
-import AppSafeAreaView from "../../../UI/SafeAreaViewStyled";
 import { useLocalSearchParams } from "expo-router";
+import { Provider } from "react-redux";
+
+import AppMenu from "../../../modules/AppMenu/AppMenu"
+import PersonsList from "../../../modules/PersonsList/PersonsList";
+import store from "../../../store/store";
+
+import AppSafeAreaView from "../../../UI/SafeAreaViewStyled";
 
 
 const RatingPage = () => {
@@ -10,12 +14,15 @@ const RatingPage = () => {
 
     return (    
         <SafeAreaProvider>
-            <AppSafeAreaView>
+            <Provider store={store}>
+                <AppSafeAreaView>
 
-                <PersonsList />
-                <AppMenu initialButton={id}/>
+                    <PersonsList />
+                    <AppMenu initialButton={id}/>
 
-            </AppSafeAreaView>
+                </AppSafeAreaView>                
+            </Provider>
+
         </SafeAreaProvider>
 
     )

@@ -1,8 +1,11 @@
 import { useWindowDimensions, StyleSheet } from "react-native"
-import AppMenu from "../../../modules/AppMenu/AppMenu"
-import HomePageContent from "../../../modules/HomePageContent/HomePageContent"
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 import { useLocalSearchParams } from "expo-router";
+import { Provider } from "react-redux";
+
+import store from "../../../store/store";
+import AppMenu from "../../../modules/AppMenu/AppMenu"
+import HomePageContent from "../../../modules/HomePageContent/HomePageContent"
 
 
 const HomePage = () => {
@@ -11,10 +14,12 @@ const HomePage = () => {
 
     return (    
         <SafeAreaProvider>
-            <SafeAreaView style = {{height, ...styles.view}}>
-                <HomePageContent style = {styles.page}/>
-                <AppMenu initialButton={id}/>
-            </SafeAreaView>
+            <Provider store={store}>
+                <SafeAreaView style = {{height, ...styles.view}}>
+                    <HomePageContent style = {styles.page}/>
+                    <AppMenu initialButton={id}/>
+                </SafeAreaView>                
+            </Provider>
         </SafeAreaProvider>
 
     )
