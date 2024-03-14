@@ -10,7 +10,7 @@ import SwitchThemeButton from "../../../components/ThemeButton/ThemeButton";
 import AppSafeAreaView from "../../../components/SafeAreaView/SafeAreaViewStyled";
 
 const ComparisonPage = () => {
-    const {id} = useLocalSearchParams();
+    const {id} = useLocalSearchParams() as {id: string};
 
     return (    
         <SafeAreaProvider>
@@ -19,7 +19,7 @@ const ComparisonPage = () => {
 
                     <SwitchThemeButton />
                     <PersonComparison />
-                    <AppMenu style = {{}} initialButton={id}/>
+                    <AppMenu initialButton={id}/>
                     
                 </AppSafeAreaView>
             </Provider>

@@ -11,7 +11,7 @@ import AppSafeAreaView from "../../../components/SafeAreaView/SafeAreaViewStyled
 
 
 const RatingPage = () => {
-    const {id} = useLocalSearchParams();
+    const {id} = useLocalSearchParams() as {id: string};
 
     return (    
         <SafeAreaProvider>
@@ -20,7 +20,7 @@ const RatingPage = () => {
                     
                     <SwitchThemeButton />
                     <PersonsList />
-                    <AppMenu style = {{}} initialButton={id}/>
+                    <AppMenu initialButton={id}/>
 
                 </AppSafeAreaView>                
             </Provider>

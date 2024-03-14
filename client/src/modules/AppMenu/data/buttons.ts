@@ -1,7 +1,17 @@
+import { ImageSourcePropType } from "react-native";
+
 const icons = require("../constants/constants").default;
 
-function getButtons(theme){
-    return buttons = [
+type ButtonType = {
+    id: number,
+    image: ImageSourcePropType,
+    description: string,
+    route: string
+
+}
+
+function getButtons(theme : string) : Array<ButtonType>{
+    return [
         {
             id: 1,
             image: theme === "light" ? icons.users : icons.users__light,

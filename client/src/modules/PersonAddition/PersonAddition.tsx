@@ -1,7 +1,8 @@
 import { View, useWindowDimensions } from "react-native"
 import * as ImagePicker from "expo-image-picker"
 import { useMemo } from "react"
-import { useDispatch, useSelector } from "react-redux"
+import { useDispatch } from "react-redux"
+import { useTypedSelector } from "@/src/hooks/useTypedSelector"
 
 import { clearForm, 
         getFormData, 
@@ -21,16 +22,16 @@ import AddImageButton from "./UI/AddImageButton"
 import AppInput from "./UI/AppInput"
 import CreateCardButton from "./UI/CreateCardButton"
 
-import styles from "./PersonAddition.style"
+import {styles} from "./PersonAddition.style"
 
 const PersonAddition = () => {
 
     const dispatch = useDispatch();
-    const personForm = useSelector(state => state.addPersonsReducer.personForm);
-    const isImageLoaded = useSelector(state => state.addPersonsReducer.isImageLoaded);
-    const imageData = useSelector(state => state.addPersonsReducer.imageData);
+    const personForm = useTypedSelector(state => state.addPersonsReducer.personForm);
+    const isImageLoaded = useTypedSelector(state => state.addPersonsReducer.isImageLoaded);
+    const imageData = useTypedSelector(state => state.addPersonsReducer.imageData) as {preview: string, base64: string};
 
-    const imageHeader = useMemo(() => 'data:image/jpeg;base64,')
+    const imageHeader = useMemo(() => 'data:image/jpeg;base64,', [])
     const {httpRequest} = useHttp()
     const {height} = useWindowDimensions();
 
@@ -71,13 +72,13 @@ const PersonAddition = () => {
                     <AppInput 
                         name = "name" 
                         value = {personForm.name} 
-                        onChangeText = {(e) => dispatch(getFormData({text: e, name: "name"}))} 
+                        onChangeText = {(e : string) => dispatch(getFormData({text: e, name: "name"}))} 
                         placeholder="Name"/>
 
                     <AppInput 
                         name = "surname" 
                         value = {personForm.surname} 
-                        onChangeText = {(e) => dispatch(getFormData({text: e, name: "surname"}))} 
+                        onChangeText = {(e : string) => dispatch(getFormData({text: e, name: "surname"}))} 
                         placeholder="Surname"/>
                 </View>
             </View>

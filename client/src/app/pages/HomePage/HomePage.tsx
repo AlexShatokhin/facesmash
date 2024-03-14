@@ -12,7 +12,7 @@ import AppSafeAreaView from "../../../components/SafeAreaView/SafeAreaViewStyled
 
 const HomePage = () => {
     const {height} = useWindowDimensions();
-    const {id} = useLocalSearchParams();
+    const {id} = useLocalSearchParams() as {id: string};
 
     return (    
         <SafeAreaProvider>
@@ -21,7 +21,7 @@ const HomePage = () => {
 
                     <SwitchThemeButton />
                     <HomePageContent style = {styles.page}/>
-                    <AppMenu style = {{}} initialButton={id}/>
+                    <AppMenu initialButton={id}/>
                     
                 </AppSafeAreaView>                
             </Provider>

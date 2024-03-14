@@ -1,3 +1,4 @@
+import { FC } from "react";
 import styled from "styled-components/native";
 
 const InputStyled = styled.TextInput`
@@ -8,7 +9,14 @@ const InputStyled = styled.TextInput`
     border-radius: 10px;
 `
 
-const AppInput = ({placeholder, ...props}) => {
+type AppInputProps = {
+    name: string,
+    value: string,
+    placeholder: string,
+    onChangeText: (e: string) => void
+}
+
+const AppInput : FC<AppInputProps> = ({placeholder, ...props}) => {
     return (
         <InputStyled 
             {...props}

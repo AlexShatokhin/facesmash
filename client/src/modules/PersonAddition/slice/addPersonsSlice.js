@@ -1,5 +1,4 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import useHttp from "../../../hooks/http.hook";
 
 const addPersonSlice = createSlice({
     name: "adding_person",

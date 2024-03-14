@@ -1,17 +1,23 @@
 import { FlatList } from "react-native";
-import { useState } from "react";
+import { useState, FC } from "react";
 import { router } from "expo-router";
-import { useSelector } from "react-redux";
+import { useTypedSelector } from "@/src/hooks/useTypedSelector";
 
 import getButtons from "./data/buttons";
 
 import {MenuMain, MenuSplitter, MenuItemsListWrapper, styles} from "./AppMenu.style"
 import MenuButton from "./UI/MenuButton";
 
-const AppMenu = ({initialButton, style}) => {
+type AppMenuProps = {
+    initialButton: string;
+    style?: object;
+
+}
+
+const AppMenu : FC<AppMenuProps> = ({initialButton, style}) => {
 
     const [activeButton, setActiveButton] = useState(+initialButton);
-    const theme = useSelector(state => state.themeReducer.theme);
+    const theme = useTypedSelector(state => state.themeReducer.theme);
     return (
         <MenuMain style = {{...style, elevation: -5}}>
             <MenuSplitter />
