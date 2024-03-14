@@ -8,7 +8,7 @@ import getButtons from "./data/buttons";
 import {MenuMain, MenuSplitter, MenuItemsListWrapper, styles} from "./AppMenu.style"
 import MenuButton from "./UI/MenuButton";
 
-const AppMenu = ({style, initialButton}) => {
+const AppMenu = ({initialButton, style}) => {
 
     const [activeButton, setActiveButton] = useState(+initialButton);
     const theme = useSelector(state => state.themeReducer.theme);

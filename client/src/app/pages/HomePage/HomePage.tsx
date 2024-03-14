@@ -21,7 +21,7 @@ const HomePage = () => {
 
                     <SwitchThemeButton />
                     <HomePageContent style = {styles.page}/>
-                    <AppMenu initialButton={id}/>
+                    <AppMenu style = {{}} initialButton={id}/>
                     
                 </AppSafeAreaView>                
             </Provider>

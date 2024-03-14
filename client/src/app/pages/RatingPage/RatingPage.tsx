@@ -20,7 +20,7 @@ const RatingPage = () => {
                     
                     <SwitchThemeButton />
                     <PersonsList />
-                    <AppMenu initialButton={id}/>
+                    <AppMenu style = {{}} initialButton={id}/>
 
                 </AppSafeAreaView>                
             </Provider>
