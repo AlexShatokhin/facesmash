@@ -1,8 +1,14 @@
-import { Text, StyleSheet, Image } from "react-native"
+import { FC, ReactElement, ReactNode } from "react"
+import { Text, StyleSheet, Image, ImageSourcePropType } from "react-native"
 import { smallShadow } from "../constants/shadow"
 import Animated, {ZoomIn, ZoomOut, FadeIn, FadeOut} from "react-native-reanimated"
 
-export default Popup = ({image, text}) => {
+type PopupProps = {
+    image: ImageSourcePropType ,
+    text: string
+}
+
+const Popup : FC<PopupProps> = ({image, text}) : ReactElement => {
     return (
         <Animated.View style = {styles.popupLayout} entering={FadeIn} exiting={FadeOut}>
             <Animated.View 
@@ -20,6 +26,9 @@ export default Popup = ({image, text}) => {
 
     )
 }
+
+export default Popup;
+
 
 const styles = StyleSheet.create({
     popupContent: {

@@ -1,4 +1,5 @@
-import { useSelector } from "react-redux";
+import { FC, ReactElement } from "react";
+import { useTypedSelector } from "../../hooks/useTypedSelector";
 
 import {PersonCardTouchableOpacity, 
         PersonCardImage, 
@@ -6,8 +7,14 @@ import {PersonCardTouchableOpacity,
         PersonCardText} from "./PersonCard.styles"
 import {mediumShadow} from "../../constants/shadow";
 
-const PersonCard = ({name, image, renderProps, ...props}) => {
-    const theme = useSelector(state => state.themeReducer.theme);
+type PersonCardProps = {
+    name: string,
+    image: string,
+    renderProps?: () => ReactElement
+}
+
+const PersonCard : FC<PersonCardProps> = ({name, image, renderProps, ...props}) => {
+    const theme = useTypedSelector(state => state.themeReducer.theme);
     return (
         <PersonCardTouchableOpacity {...props} style = {mediumShadow}>
             <PersonCardImage                     
