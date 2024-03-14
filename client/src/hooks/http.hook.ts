@@ -5,7 +5,7 @@ const useHttp = () => {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(false);
 
-    const httpRequest = async (url, method = "GET", body = null, headers = {"Content-type": "application/json"})=>{
+    const httpRequest = async (url : string, method = "GET", body = null, headers = {"Content-type": "application/json"})=>{
 
         setLoading(true);
         setError(false);

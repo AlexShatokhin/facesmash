@@ -4,7 +4,8 @@ import {SafeAreaView } from "react-native-safe-area-context";
 import { useTypedSelector } from "@/src/hooks/useTypedSelector";
 
 type AppSafeAreaViewProps = {
-    children: JSX.Element
+    children: JSX.Element | JSX.Element[],
+    style?: object
 }
 
 const AppSafeAreaView : FC<AppSafeAreaViewProps> = (props) => {

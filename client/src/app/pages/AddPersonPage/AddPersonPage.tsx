@@ -20,7 +20,7 @@ const AddPersonPage = () => {
 
                     <SwitchThemeButton />
                     <AddPerson />
-                    <AppMenu initialButton={id}/>
+                    <AppMenu style = {{}} initialButton={id}/>
                     
                 </AppSafeAreaView>
             </Provider>

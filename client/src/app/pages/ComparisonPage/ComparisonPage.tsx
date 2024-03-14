@@ -18,8 +18,8 @@ const ComparisonPage = () => {
                 <AppSafeAreaView>
 
                     <SwitchThemeButton />
-                    <PersonComparison style = {{flex: 1, justifyContent: "center"}}/>
-                    <AppMenu initialButton={id}/>
+                    <PersonComparison />
+                    <AppMenu style = {{}} initialButton={id}/>
                     
                 </AppSafeAreaView>
             </Provider>
