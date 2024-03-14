@@ -1,8 +1,9 @@
+import { FC } from "react";
 import { useWindowDimensions } from "react-native";
-import styles from "../PersonAddition.style"
+import {styles} from "../PersonAddition.style"
 import styled from "styled-components/native";
 
-const CreateCardButton = (props) => {
+const CreateCardButton : FC<any> = (props) => {
 
     const {width} = useWindowDimensions();
     const CreateCardTouchableOpacity = styled.TouchableOpacity`

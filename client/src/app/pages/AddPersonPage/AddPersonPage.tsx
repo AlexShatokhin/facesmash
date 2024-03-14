@@ -11,7 +11,7 @@ import AppSafeAreaView from "../../../components/SafeAreaView/SafeAreaViewStyled
 
 
 const AddPersonPage = () => {
-    const {id} = useLocalSearchParams();
+    const {id} = useLocalSearchParams() as {id: string};
 
     return (    
         <SafeAreaProvider>
@@ -20,7 +20,7 @@ const AddPersonPage = () => {
 
                     <SwitchThemeButton />
                     <AddPerson />
-                    <AppMenu style = {{}} initialButton={id}/>
+                    <AppMenu initialButton={id}/>
                     
                 </AppSafeAreaView>
             </Provider>

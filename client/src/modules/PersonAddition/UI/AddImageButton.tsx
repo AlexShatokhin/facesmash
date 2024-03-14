@@ -1,3 +1,4 @@
+import { FC } from "react"
 import { Image } from "react-native"
 import styled from "styled-components/native"
 
@@ -16,7 +17,12 @@ const AddImagePlus = styled.Text`
     color: #808080;
 `
 
-const AddImageButton = ({preview, ...props}) => {
+type AddImageButtonProps = {
+    preview: string | null,
+    onPress: () => void
+}
+
+const AddImageButton : FC<AddImageButtonProps> = ({preview, ...props}) => {
 
     return (
         <AddImageTouchableOpacity {...props}>

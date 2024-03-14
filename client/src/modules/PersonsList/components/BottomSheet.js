@@ -21,8 +21,8 @@ const BottomSheet = (props) => {
             style = {styles.sheet}>
 
             <Animated.View 
-                entering={SlideInDown.springify().damping(20)} 
-                exiting={SlideOutDown.springify().damping(20)}
+                entering={SlideInDown.springify().damping(17).mass(1)} 
+                exiting={SlideOutDown.springify().damping(17).mass(1)}
                 style = {{...styles.sheetContent, width: width - 10}}>
                 {props.children}
             </Animated.View>

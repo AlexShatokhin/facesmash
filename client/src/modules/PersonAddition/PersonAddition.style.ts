@@ -1,7 +1,7 @@
 import { StyleSheet } from "react-native";
 import {smallShadow} from "../../constants/shadow";
 
-export default styles = StyleSheet.create({
+export const styles = StyleSheet.create({
     container: {
         height: 350
     },
