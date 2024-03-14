@@ -1,10 +1,15 @@
+import { FC } from "react";
 import { useWindowDimensions, StyleSheet } from "react-native";
 import {SafeAreaView } from "react-native-safe-area-context";
-import { useSelector } from "react-redux";
+import { useTypedSelector } from "@/src/hooks/useTypedSelector";
 
-const AppSafeAreaView = (props) => {
+type AppSafeAreaViewProps = {
+    children: JSX.Element
+}
+
+const AppSafeAreaView : FC<AppSafeAreaViewProps> = (props) => {
     const {height} = useWindowDimensions();
-    const theme = useSelector(state => state.themeReducer.theme);
+    const theme = useTypedSelector(state => state.themeReducer.theme);
 
     return (
         <SafeAreaView style = {{...styles.wrapper, height, backgroundColor: theme === "light" ? "#FFFFFF" : "#37393d"}}>

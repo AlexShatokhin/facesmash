@@ -1,4 +1,5 @@
-import { TouchableOpacity, Image } from "react-native";
+import { FC, ReactElement } from "react";
+import { Image } from "react-native";
 import styled from "styled-components/native";
 
 const NavigationTouchableOpacity = styled.TouchableOpacity`
@@ -6,7 +7,7 @@ const NavigationTouchableOpacity = styled.TouchableOpacity`
     height: 45px;
 `
 
-const NavigationButton = () => {
+const NavigationButton : FC  = () : ReactElement => {
     const arrow = require("../constants/icons").chevronLeft
     return (
         <NavigationTouchableOpacity>

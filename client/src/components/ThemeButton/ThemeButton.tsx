@@ -1,5 +1,6 @@
 import { Image } from "react-native";
-import { useSelector, useDispatch} from "react-redux";
+import { useDispatch} from "react-redux";
+import { useTypedSelector } from "@/src/hooks/useTypedSelector";
 import { toggleTheme } from "./themeSlice";
 
 import styled from "styled-components/native";
@@ -20,7 +21,7 @@ const NavigationTouchableOpacity = styled.TouchableOpacity`
 `
 
 const SwitchThemeButton = () => {
-    const theme = useSelector(state => state.themeReducer.theme);
+    const theme = useTypedSelector(state => state.themeReducer.theme);
     const dispatch = useDispatch();
 
     return (
