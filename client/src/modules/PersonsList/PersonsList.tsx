@@ -1,8 +1,8 @@
 import { useEffect } from "react"
-import { useDispatch, useSelector } from "react-redux"
-import { View, ActivityIndicator, Text, Image, ImageBackground  } from "react-native"
+import { useDispatch } from "react-redux"
+import { useTypedSelector } from "@/src/hooks/useTypedSelector";
+import { View, ActivityIndicator } from "react-native"
 
-import { LinearGradient } from "expo-linear-gradient"
 
 import useHttp from "../../hooks/http.hook";
 
@@ -25,16 +25,16 @@ import { PersonRating, FilterContainer, styles } from "./PersonsList.style"
 const PersonsList = () => {
 
     const dispatch = useDispatch();
-    const persons = useSelector(state => state.personsListReducer.persons);
-    const activeFilterIndex = useSelector(state => state.personsListReducer.activeFilterIndex);
-    const showBottomSheet = useSelector(state => state.personsListReducer.showBottomSheet);
-    const bottomSheetPersonId = useSelector(state => state.personsListReducer.bottomSheetPersonId)
+    const persons = useTypedSelector(state => state.personsListReducer.persons);
+    const activeFilterIndex = useTypedSelector(state => state.personsListReducer.activeFilterIndex);
+    const showBottomSheet = useTypedSelector(state => state.personsListReducer.showBottomSheet);
+    const bottomSheetPersonId = useTypedSelector(state => state.personsListReducer.bottomSheetPersonId)
 
     const {loading, error, httpRequest} = useHttp();
 
     useEffect(() => getPersons(getSortType(activeFilterIndex)), [])
 
-    function toggleFilter(value){
+    function toggleFilter(value : number){
         dispatch(updateFilterIndex(value));
         if(value !== activeFilterIndex)
             getPersons(getSortType(value))

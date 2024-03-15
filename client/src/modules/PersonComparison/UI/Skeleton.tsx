@@ -1,10 +1,10 @@
 import "react-native-reanimated"
-
+import { FC } from "react"
 import { Pressable } from "react-native"
 import {MotiView} from "moti"
 import {Skeleton} from "moti/skeleton"
 
-const SkeletonComponent = (props) => {
+const SkeletonComponent : FC<any> = (props) => {
 	return (
 			<Pressable {...props}>
 				<MotiView

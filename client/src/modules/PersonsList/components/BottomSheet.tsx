@@ -1,13 +1,18 @@
+import { FC } from "react";
 import { useDispatch} from "react-redux";
 
 import { toggleBottomSheet } from "../slice/personsListSlice";
 
 import Animated, {SlideInDown, SlideOutDown, FadeIn, FadeOut} from "react-native-reanimated";
-import { Text, useWindowDimensions, Pressable } from "react-native";
+import { useWindowDimensions, Pressable } from "react-native";
 
 import {styles} from "../PersonsList.style"
 
-const BottomSheet = (props) => {
+type BottomSheetProps = {
+    children: React.ReactNode | React.ReactNode[]
+}
+
+const BottomSheet : FC<BottomSheetProps> = (props) => {
 
     const dispatch = useDispatch();
     const {width} = useWindowDimensions();
@@ -17,7 +22,7 @@ const BottomSheet = (props) => {
         <Touchable 
             entering={FadeIn} 
             exiting={FadeOut}
-            onPress={() => dispatch(toggleBottomSheet())} 
+            onPress={() => dispatch(toggleBottomSheet(0))} 
             style = {styles.sheet}>
 
             <Animated.View 

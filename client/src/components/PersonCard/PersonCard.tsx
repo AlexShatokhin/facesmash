@@ -10,6 +10,9 @@ import {mediumShadow} from "../../constants/shadow";
 type PersonCardProps = {
     name: string,
     image: string,
+    disabled?: boolean,
+    animation?: boolean,
+    onPress?: () => void,
     renderProps?: () => ReactElement
 }
 

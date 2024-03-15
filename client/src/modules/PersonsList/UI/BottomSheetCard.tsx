@@ -1,12 +1,20 @@
+import { FC } from "react"
 import {View, Text, Image} from "react-native"
 import { LinearGradient } from "expo-linear-gradient"
 
-import { useSelector } from "react-redux"
+import { useTypedSelector } from "@/src/hooks/useTypedSelector"
 
 import { styles } from "../PersonsList.style"
 
-export default function BottomSheetCard({name, surname, image}) {
-    const theme = useSelector(state => state.themeReducer.theme)
+type BottomSheetCardProps = {
+    name: string,
+    surname: string,
+    image: string
+
+}
+
+const BottomSheetCard : FC<BottomSheetCardProps> = ({name, surname, image}) => {
+    const theme = useTypedSelector(state => state.themeReducer.theme)
     return (
         <View>
             <View>
@@ -25,3 +33,5 @@ export default function BottomSheetCard({name, surname, image}) {
         </View>
     )
 }
+
+export default BottomSheetCard;
