@@ -11,12 +11,18 @@ import PersonCard from "../../components/PersonCard/PersonCard"
 import LoadingView from "./UI/Loading"
 import Score from "./UI/Score"
 
-import styles from "./PersonComparison.style"
+import {styles} from "./PersonComparison.style"
+import { personCardType } from "@/src/types/personCardType"
+
+type showScoreAnimationType = {
+    persons: number[];
+    chosenPerson: number;
+}
 
 const PersonComparison = () => {
 
-    const [persons, setPersons] = useState([]);
-    const [showScoreAnimation, setShowScoreAnimation] = useState(null);
+    const [persons, setPersons] = useState<personCardType[]>([]);
+    const [showScoreAnimation, setShowScoreAnimation] = useState<showScoreAnimationType | null>(null);
     const [personsCompared, setPersonsCompared] = useState(false);
     const {httpRequest, loading, error} = useHttp()
 
@@ -31,7 +37,7 @@ const PersonComparison = () => {
         setPersonsCompared(prev => !prev);
     }
 
-    function comparePersons(personID){
+    function comparePersons(personID: number){
         
         togglePersonsCompared();
         setShowScoreAnimation(prepareDataToCompare(persons, personID));

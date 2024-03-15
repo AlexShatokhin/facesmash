@@ -23,13 +23,14 @@ import AppInput from "./UI/AppInput"
 import CreateCardButton from "./UI/CreateCardButton"
 
 import {styles} from "./PersonAddition.style"
+import { addPersonCardImageType } from "@/src/types/addPersonCardType"
 
 const PersonAddition = () => {
 
     const dispatch = useDispatch();
     const personForm = useTypedSelector(state => state.addPersonsReducer.personForm);
     const isImageLoaded = useTypedSelector(state => state.addPersonsReducer.isImageLoaded);
-    const imageData = useTypedSelector(state => state.addPersonsReducer.imageData) as {preview: string, base64: string};
+    const imageData = useTypedSelector(state => state.addPersonsReducer.imageData) as addPersonCardImageType;
 
     const imageHeader = useMemo(() => 'data:image/jpeg;base64,', [])
     const {httpRequest} = useHttp()
@@ -45,7 +46,7 @@ const PersonAddition = () => {
     }
 
     async function pickImage() {
-        let result = await ImagePicker.launchImageLibraryAsync({
+        let result  = await ImagePicker.launchImageLibraryAsync({
           mediaTypes: ImagePicker.MediaTypeOptions.All,
           base64: true,
           allowsEditing: true,
@@ -55,7 +56,7 @@ const PersonAddition = () => {
 
         const isImageExist = result.assets !== null;
         if(isImageExist)
-            dispatch(changeImageData(getImageData(result)));
+            dispatch(changeImageData(getImageData(result as ImagePicker.ImagePickerSuccessResult)));
             
         dispatch(changeImageLoadedStatus(isImageExist));   
     };

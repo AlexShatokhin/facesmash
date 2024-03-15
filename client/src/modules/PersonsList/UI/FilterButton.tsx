@@ -1,6 +1,13 @@
+import { FC } from "react";
 import styled from "styled-components/native";
 
-const FilterButton = ({value, active, ...props}) => {
+type FilterButtonProps = {
+    value: string,
+    active: boolean,
+    onPress: () => void
+}
+
+const FilterButton : FC<FilterButtonProps> = ({value, active, ...props}) => {
 
     const FilterTouchableOpacity = styled.TouchableOpacity`
     width: 120px;

@@ -1,4 +1,7 @@
 export type personCardType = {
-    name: String,
-    image: String,
+    id: number,
+    name: string,
+    surname: string,
+    imageURL: string,
+    rating: number
 }

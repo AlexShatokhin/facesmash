@@ -1,5 +1,10 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
+type FormDataPayloadType = {
+    name: "name" | "surname",
+    text: string
+}
+
 const addPersonSlice = createSlice({
     name: "adding_person",
     initialState: {
@@ -21,7 +26,8 @@ const addPersonSlice = createSlice({
             state.imageData = {};
         },
         getFormData: (state, action) => {
-            state.personForm[action.payload.name] = action.payload.text
+            const typedAction = action as {payload: FormDataPayloadType};
+            state.personForm[typedAction.payload.name] = typedAction.payload.text
         },
         changePopupValue: (state, action) => {
             state.showPopup = action.payload
