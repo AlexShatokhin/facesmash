@@ -9,7 +9,7 @@ export const HomePageTitle = styled.Text`
     font-size: 55px;
     font-weight: 800;
     text-align: center;
-    color: #800000;
+    color: #A00000;
 `
 
 export const HomePageSubtitle = styled.Text`
