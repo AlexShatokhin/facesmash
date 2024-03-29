@@ -9,6 +9,7 @@ import store from "../../../store/store";
 import SwitchThemeButton from "../../../components/ThemeButton/ThemeButton";
 import AppSafeAreaView from "../../../components/SafeAreaView/SafeAreaViewStyled";
 
+import AppAuthorization from "@/src/modules/AppAuthorization/AppAuthorization";
 
 const RatingPage = () => {
     const {id} = useLocalSearchParams() as {id: string};
@@ -19,8 +20,10 @@ const RatingPage = () => {
                 <AppSafeAreaView>
                     
                     <SwitchThemeButton />
-                    <PersonsList />
-                    <AppMenu initialButton={id}/>
+                    {/* <PersonsList />
+                    <AppMenu initialButton={id}/> */}
+
+                    <AppAuthorization />
 
                 </AppSafeAreaView>                
             </Provider>
