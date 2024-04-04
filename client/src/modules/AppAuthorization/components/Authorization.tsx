@@ -1,6 +1,6 @@
-import { ActivityIndicator } from "react-native"
 import { useTypedSelector } from "@/src/hooks/useTypedSelector"
 import { useDispatch } from "react-redux"
+import { router } from "expo-router"
 import useHttp from "@/src/hooks/http.hook" 
 
 import { clearForm, changeRequestMessage } from "../slice/AuthorizationSlice"
@@ -25,7 +25,10 @@ const Authorization = () => {
 
     function authUser(){
         sendAuthorizationQuery(phone, password, httpRequest)
-        .then((res) => dispatch(changeRequestMessage(res.message)))
+        .then(() => {
+            dispatch(changeRequestMessage(""));
+            router.navigate({pathname: "pages/HomePage/HomePage"})
+        })
         .finally(() => dispatch(clearForm()))
     }
 
