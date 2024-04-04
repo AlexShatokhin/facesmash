@@ -14,7 +14,8 @@ type AppInputProps = {
     name: string,
     value: string,
     placeholder: string,
-    style?: object
+    style?: object,
+    secureTextEntry?: boolean,
     onChangeText: (e: string) => void
 }
 

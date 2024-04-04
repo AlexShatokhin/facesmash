@@ -2,12 +2,13 @@ import { FC } from "react"
 import { TouchableOpacity, Text, StyleSheet } from "react-native"
 
 type AppAuthorizationButtonProps = {
-    text: string | ""
+    text: string | "",
+    onPress?: () => void
 }
 
-const AppAuthorizationButton : FC<AppAuthorizationButtonProps> = ({text}) => {
+const AppAuthorizationButton : FC<AppAuthorizationButtonProps> = ({text, onPress}) => {
     return (
-        <TouchableOpacity style = {styles.button}>
+        <TouchableOpacity onPress={onPress} style = {styles.button}>
             <Text style = {styles.buttonText}>{text}</Text>
         </TouchableOpacity>
     )
