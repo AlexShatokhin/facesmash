@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 type setDataType = {
-    name: "login" | "password" | "smsCode",
+    name: "phone" | "password" | "smsCode",
     value: string
 
 }
@@ -10,11 +10,12 @@ const AuthorizationSlice = createSlice({
     name: "authorization",
     initialState: {
         isAuthorized: false,
-        login: "",
+        phone: "+373",
         password: "",
         name: "",
         smsCode: "",
         logInMode: true,
+        requestMessage: ""
     },
     reducers: {
         setAuthorization: (state, action) => {
@@ -23,19 +24,25 @@ const AuthorizationSlice = createSlice({
         changeInputValue: (state, action) => {
             const typedAction = action as {payload: setDataType};
             state[typedAction.payload.name] = typedAction.payload.value;
+            state.requestMessage = "";
         },
         toggleMode: (state) => {
             state.logInMode = !state.logInMode;
-            state.login = "";
+            state.phone = "+373";
+            state.password = "";
+            state.name = "";
+            state.smsCode = "";
+            state.requestMessage = "";
+
+        },
+        clearForm: (state) => {
+            state.phone = "+373";
             state.password = "";
             state.name = "";
             state.smsCode = "";
         },
-        clearForm: (state) => {
-            state.login = "";
-            state.password = "";
-            state.name = "";
-            state.smsCode = "";
+        changeRequestMessage: (state, action) => {
+            state.requestMessage = action.payload;
         }
     },
 });
@@ -45,5 +52,7 @@ export default reducer;
 export const {
     setAuthorization,
     changeInputValue,
-    toggleMode
+    toggleMode,
+    changeRequestMessage,
+    clearForm
 } = actions
