@@ -1,16 +1,20 @@
 import { View } from "react-native";
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
+import { Provider } from "react-redux";
+import store from "../store/store";
 
-import HomePage from "./pages/HomePage/HomePage"
+import AppAuthorization from "../modules/AppAuthorization/AppAuthorization";
 
 export default function Page() {
 	return (
 		<SafeAreaProvider>
-			<SafeAreaView>
-				<View>				
-					<HomePage />
-				</View>
-			</SafeAreaView>
+			<Provider store={store}>
+				<SafeAreaView>
+					<View>				
+						<AppAuthorization />
+					</View>
+				</SafeAreaView>
+			</Provider>
 		</SafeAreaProvider>
 	);
 }
