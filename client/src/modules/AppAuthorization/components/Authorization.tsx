@@ -25,9 +25,13 @@ const Authorization = () => {
 
     function authUser(){
         sendAuthorizationQuery(phone, password, httpRequest)
-        .then(() => {
-            dispatch(changeRequestMessage(""));
-            router.navigate({pathname: "pages/HomePage/HomePage"})
+        .then((res) => {
+            if(res.code === 200) {
+                dispatch(changeRequestMessage(""));
+                router.navigate({pathname: "pages/HomePage/HomePage"})
+            } else {
+                dispatch(changeRequestMessage(res.message))
+            }
         })
         .finally(() => dispatch(clearForm()))
     }
