@@ -7,6 +7,7 @@ import PersonComparison from "../../../modules/PersonComparison/PersonComparison
 import store from "../../../store/store";
 
 import SwitchThemeButton from "../../../components/ThemeButton/ThemeButton";
+import ProfileButton from "@/src/components/ProfileMenu/ProfileMenu";
 import AppSafeAreaView from "../../../components/SafeAreaView/SafeAreaViewStyled";
 
 const ComparisonPage = () => {
@@ -17,7 +18,7 @@ const ComparisonPage = () => {
             <Provider store={store}>
                 <AppSafeAreaView>
 
-                    <SwitchThemeButton />
+                    <ProfileButton />
                     <PersonComparison />
                     <AppMenu initialButton={id}/>
                     

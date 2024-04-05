@@ -6,7 +6,7 @@ import AppMenu from "../../../modules/AppMenu/AppMenu"
 import AddPerson from "../../../modules/PersonAddition/PersonAddition";
 import store from "../../../store/store";
 
-import SwitchThemeButton from "../../../components/ThemeButton/ThemeButton";
+import ProfileMenu from "@/src/components/ProfileMenu/ProfileMenu";
 import AppSafeAreaView from "../../../components/SafeAreaView/SafeAreaViewStyled";
 
 
@@ -18,7 +18,7 @@ const AddPersonPage = () => {
             <Provider store={store}>
                 <AppSafeAreaView>
 
-                    <SwitchThemeButton />
+                    <ProfileMenu />
                     <AddPerson />
                     <AppMenu initialButton={id}/>
                     

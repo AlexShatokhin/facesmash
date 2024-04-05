@@ -3,7 +3,6 @@ import { View, Text } from "react-native";
 import { useTypedSelector } from "@/src/hooks/useTypedSelector";
 
 import AppSafeAreaView from "@/src/components/SafeAreaView/SafeAreaViewStyled";
-import SwitchThemeButton from "@/src/components/ThemeButton/ThemeButton";
 import FormInputs from "./components/FormInputs";
 import FormToggling from "./components/FormToggling";
 import Authorization from "./components/Authorization";
@@ -19,7 +18,6 @@ const AppAuthorization : FC = () => {
 
     return (
         <AppSafeAreaView >
-            <SwitchThemeButton />
 
             <View style={styles.container}>
 

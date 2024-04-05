@@ -12,12 +12,9 @@ const NavigationTouchableOpacity = styled.TouchableOpacity`
     display: flex;
     justify-content: center;
     align-items: center;
-    right: 30px;
-    top: 20px;
     width: 45px;
     height: 45px;
     border-radius: 30px;
-    background-color: #808080;
 `
 
 const SwitchThemeButton = () => {

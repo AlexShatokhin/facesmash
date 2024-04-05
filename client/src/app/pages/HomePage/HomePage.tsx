@@ -7,7 +7,7 @@ import store from "../../../store/store";
 import AppMenu from "../../../modules/AppMenu/AppMenu"
 import HomePageContent from "../../../modules/HomePageContent/HomePageContent"
 
-import SwitchThemeButton from "../../../components/ThemeButton/ThemeButton";
+import ProfileMenu from "@/src/components/ProfileMenu/ProfileMenu";
 import AppSafeAreaView from "../../../components/SafeAreaView/SafeAreaViewStyled";
 
 const HomePage = () => {
@@ -19,7 +19,7 @@ const HomePage = () => {
             <Provider store={store}>
                 <AppSafeAreaView style = {{height, ...styles.view}}>
 
-                    <SwitchThemeButton />
+                    <ProfileMenu />
                     <HomePageContent style = {styles.page}/>
                     <AppMenu initialButton={id}/>
                     

@@ -54,7 +54,7 @@ const PersonComparison = () => {
 
     function renderCards(){
         return persons.map(person => 
-            <View>
+            <View key = {person.id}>
                 {
                     showScoreAnimation ? 
                         showScoreAnimation.chosenPerson === person.id ? 
@@ -66,7 +66,6 @@ const PersonComparison = () => {
                 <PersonCard 
                     disabled = {personsCompared}
                     animation = {false}
-                    key = {person.id}
                     onPress = {() => comparePersons(person.id)}
                     name = {person.name + " " + person.surname} 
                     image = {person.imageURL}/>                

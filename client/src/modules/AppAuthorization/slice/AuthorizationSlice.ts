@@ -1,9 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { AuthorizationDataType } from "@/src/types/AthorizationDataType";
 
 type setDataType = {
     name: "phone" | "password" | "smsCode",
     value: string
-
 }
 
 const AuthorizationSlice = createSlice({
@@ -15,7 +15,14 @@ const AuthorizationSlice = createSlice({
         name: "",
         smsCode: "",
         logInMode: true,
-        requestMessage: ""
+        requestMessage: "",
+        authorizationData: {
+            id: 0,
+            name: "",
+            phone: "",
+            password: "",
+            role: "",
+        }
     },
     reducers: {
         setAuthorization: (state, action) => {
@@ -43,6 +50,19 @@ const AuthorizationSlice = createSlice({
         },
         changeRequestMessage: (state, action) => {
             state.requestMessage = action.payload;
+        },
+        getAuthorizationData: (state, action) => {
+            const typedAction = action as {payload: AuthorizationDataType};
+            state.authorizationData = typedAction.payload;
+        },
+        removeAuthorizationData: (state) => {
+            state.authorizationData = {
+                id: 0,
+                name: "",
+                phone: "",
+                password: "",
+                role: "",
+            };
         }
     },
 });
@@ -54,5 +74,7 @@ export const {
     changeInputValue,
     toggleMode,
     changeRequestMessage,
-    clearForm
+    clearForm,
+    getAuthorizationData,
+    removeAuthorizationData
 } = actions

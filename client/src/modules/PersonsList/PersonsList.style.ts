@@ -45,7 +45,7 @@ export const styles = StyleSheet.create({
         flexDirection: "column",
         justifyContent: "flex-end",
         alignItems: "center",
-        zIndex: 10
+        zIndex: 10,
     },
 
     sheetContent: {

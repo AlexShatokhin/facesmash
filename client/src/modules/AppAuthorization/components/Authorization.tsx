@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux"
 import { router } from "expo-router"
 import useHttp from "@/src/hooks/http.hook" 
 
-import { clearForm, changeRequestMessage } from "../slice/AuthorizationSlice"
+import { clearForm, changeRequestMessage, getAuthorizationData } from "../slice/AuthorizationSlice"
 
 import sendAuthorizationQuery from "../api/sendAuthorizationQuery"
 import sendRegistrationQuery from "../api/sendRegistrationQuery"
@@ -28,6 +28,8 @@ const Authorization = () => {
         .then((res) => {
             if(res.code === 200) {
                 dispatch(changeRequestMessage(""));
+                dispatch(getAuthorizationData(res.user));
+                
                 router.navigate({pathname: "pages/HomePage/HomePage"})
             } else {
                 dispatch(changeRequestMessage(res.message))

@@ -6,7 +6,7 @@ import AppMenu from "../../../modules/AppMenu/AppMenu"
 import PersonsList from "../../../modules/PersonsList/PersonsList";
 import store from "../../../store/store";
 
-import SwitchThemeButton from "../../../components/ThemeButton/ThemeButton";
+import ProfileMenu from "@/src/components/ProfileMenu/ProfileMenu";
 import AppSafeAreaView from "../../../components/SafeAreaView/SafeAreaViewStyled";
 
 const RatingPage = () => {
@@ -17,7 +17,7 @@ const RatingPage = () => {
             <Provider store={store}>
                 <AppSafeAreaView>
                     
-                    <SwitchThemeButton />
+                    <ProfileMenu />
                     <PersonsList />
                     <AppMenu initialButton={id}/>
 
